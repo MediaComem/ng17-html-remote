@@ -5,7 +5,7 @@
         <swatches-picker :value="colors" @input="changeColor" />
       </div>
       <div>
-        <app-input @messageChanged="messageChanged"></app-input>
+        <app-input :msg="pseudo" @messageChanged="messageChanged"></app-input>
       </div>
       <div>
         <md-button @click="playRoute" class="md-raised md-primary">Jouer</md-button>
@@ -25,7 +25,8 @@
     },
     methods: {
       messageChanged (event) {
-        this.$store.commit('setPseudo', event)
+        this.pseudo = event
+        this.$store.commit('setPseudo', this.pseudo)
       },
       changeColor (event) {
         this.$store.commit('setColor', event)
@@ -34,9 +35,14 @@
         this.$router.push('/controller')
       }
     },
+    created () {
+      this.colors = this.$store.getters.getColor
+      this.pseudo = this.$store.state.pseudo
+    },
     data () {
       return {
-        colors: ''
+        colors: '',
+        pseudo: ''
       }
     }
   }

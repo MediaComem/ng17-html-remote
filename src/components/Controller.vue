@@ -19,16 +19,15 @@ export default {
       }
     }
   },
-  watch: {
-    '$route' (to, from) {
+  created () {
+    if (Object.keys(this.$store.getters.getColor).length === 0) {
+      this.$router.push('/')
+    }
+    if (this.$store.state.pseudo.length === 0) {
+      this.$router.push('/')
     }
   },
-  created () {
-    console.log('getter', this.$store.getters.getColor)
-  },
   methods: {
-    goHome () {
-    },
     onTap (e) {
       var xPos = e.srcEvent.layerX
       var yPos = e.srcEvent.layerY - this.$refs.templeImage.offsetTop
@@ -39,7 +38,7 @@ export default {
       var data = {
         'senderId': this.$socket.id,
         'shotType': 'target',
-        'color': this.$store.getters.getColor,
+        'color': this.$store.getters.getColorForUnity,
         'position': {
           'x': xRatio,
           'y': yRatio,

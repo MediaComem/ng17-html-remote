@@ -19,19 +19,23 @@ export const store = new Vuex.Store({
       state.message = message
     },
     setColor (state, color) {
-      state.color = {
-        r: color.rgba.r / 255,
-        b: color.rgba.b / 255,
-        g: color.rgba.g / 255,
-        a: color.rgba.a
+      state.color = {...color,
+        unity: {
+          r: color.rgba.r / 255,
+          b: color.rgba.b / 255,
+          g: color.rgba.g / 255,
+          a: color.rgba.a
+        }
       }
-      console.log(state.color)
     },
     setPseudo (state, pseudo) {
       state.pseudo = pseudo
     }
   },
   getters: {
+    getColorForUnity (state) {
+      return state.color.unity
+    },
     getColor (state) {
       return state.color
     }

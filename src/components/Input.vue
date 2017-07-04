@@ -1,7 +1,7 @@
 <template>
   <md-input-container md-inline>
     <label>Pseudo</label>
-    <md-input v-model="inputValue" @change="changeMessage"></md-input>
+    <md-input v-model="msg" @change="changeMessage"></md-input>
   </md-input-container>
 </template>
 
