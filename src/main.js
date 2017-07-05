@@ -11,7 +11,7 @@ import { store } from './store'
 import Sidenav from '@/components/Sidenav'
 import SocketIO from '@/components/SocketIO'
 
-const socketInstance = io('http://10.192.115.161:3011')
+const socketInstance = io('http://10.192.115.172:3011')
 
 Vue.use(VueSocketio, socketInstance, store)
 Vue.use(VueMaterial)
