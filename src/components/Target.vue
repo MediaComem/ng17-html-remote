@@ -31,6 +31,7 @@ export default {
   width: 80px;
   top: 0px;
   left: 0px;
+  pointer-events: none;
 }
 .isHidden {
   display: none;

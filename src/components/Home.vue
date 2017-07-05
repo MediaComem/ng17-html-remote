@@ -5,7 +5,7 @@
         <swatches-picker :value="colors" @input="changeColor" />
       </div>
       <div>
-        <app-input :msg="pseudo" @messageChanged="messageChanged"></app-input>
+        <app-input ref="input" :msg="pseudo" @messageChanged="messageChanged"></app-input>
       </div>
       <div>
         <md-button @click="playRoute" class="md-raised md-primary">Jouer</md-button>
@@ -31,7 +31,7 @@
       changeColor (event) {
         this.$store.commit('setColor', event)
       },
-      playRoute () {
+      playRoute (event) {
         this.$router.push('/controller')
       }
     },
@@ -52,23 +52,6 @@
 <style>
 .container {
   display: grid;
-}
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
 }
 
 .vue-color__swatches__box {

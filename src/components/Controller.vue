@@ -38,7 +38,6 @@ export default {
     onTap (e) {
       var xPos = e.srcEvent.layerX
       var yPos = e.srcEvent.layerY - this.$refs.templeImage.offsetTop
-      console.log()
       this.posX = xPos - (this.$refs.target.$el.width / 2)
       this.posY = yPos - (this.$refs.target.$el.height / 2)
       var xRatio = (-20 * (xPos / this.$refs.templeImage.width)) + 9.5
