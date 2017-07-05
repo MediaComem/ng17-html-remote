@@ -8,14 +8,16 @@ export const store = new Vuex.Store({
     connect: false,
     message: null,
     pseudo: '',
-    color: {}
+    color: {},
+    stats: {
+      ballCount: 0
+    }
   },
   mutations: {
     SOCKET_CONNECT (state, status) {
       state.connect = true
     },
     NEW_MESSAGE_RECEIVED (state, message) {
-      console.log('something else')
       state.message = message
     },
     setColor (state, color) {
@@ -30,6 +32,9 @@ export const store = new Vuex.Store({
     },
     setPseudo (state, pseudo) {
       state.pseudo = pseudo
+    },
+    addToBallCount (state) {
+      state.stats.ballCount += 1
     }
   },
   getters: {

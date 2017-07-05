@@ -14,10 +14,13 @@
         </div>
         <md-list>
           <md-list-item>
+            <md-icon>send</md-icon><span><router-link @click.native="close()" to="/">Home</router-link></span>
+          </md-list-item>
+          <md-list-item>
             <md-icon>move_to_inbox</md-icon><span><router-link @click.native="close()" to="/controller">Controller</router-link></span>
           </md-list-item>
           <md-list-item>
-            <md-icon>send</md-icon><span><router-link @click.native="close()" to="/">Home</router-link></span>
+            <md-icon>show_chart</md-icon><span><router-link @click.native="close()" to="/stats">Stats</router-link></span>
           </md-list-item>
         </md-list>
       </md-toolbar>

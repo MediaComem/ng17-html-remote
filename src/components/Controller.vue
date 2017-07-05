@@ -16,12 +16,6 @@ export default {
   },
   data () {
     return {
-      message: 'hi',
-      color: {
-        r: 158,
-        g: 0,
-        b: 200
-      },
       posX: 20,
       posY: 40
     }
@@ -43,6 +37,7 @@ export default {
       var xRatio = (-20 * (xPos / this.$refs.templeImage.width)) + 9.5
       var yRatio = 28 * (1 - (yPos / this.$refs.templeImage.height)) - 1
       this.$refs.target.displayTarget()
+      this.$store.commit('addToBallCount')
       var data = {
         'senderId': this.$socket.id,
         'shotType': 'target',
