@@ -2,6 +2,10 @@
 
 > html remote for numerik games 2017
 
+## Notes
+
+https://play.google.com/intl/en_us/badges/
+
 ## Build Setup
 
 ``` bash
