@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Controller from '@/components/Controller'
 import Stats from '@/components/Stats'
+import Schedule from '@/components/Schedule'
 
 Vue.use(Router)
 
@@ -23,6 +24,12 @@ export default new Router({
       path: '/stats',
       name: 'Statistiques',
       component: Stats
+    },
+    {
+      path: '/schedule',
+      name: 'Programme',
+      component: Schedule
+
     }
   ]
 })

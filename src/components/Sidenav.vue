@@ -22,6 +22,11 @@
           <md-list-item>
             <md-icon>show_chart</md-icon><span><router-link @click.native="close()" to="/stats">Stats</router-link></span>
           </md-list-item>
+
+          <md-list-item>
+            <span><router-link @click.native="close()" to="/schedule">Programme</router-link></span>
+          </md-list-item>
+
         </md-list>
       </md-toolbar>
     </md-sidenav>
