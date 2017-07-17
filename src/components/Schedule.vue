@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- First night -->
      <table>
       <th colspan="2">
         <td>{{ night1.tag }}</td>

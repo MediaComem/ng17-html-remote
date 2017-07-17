@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
 import Controller from '@/components/Controller'
 import Stats from '@/components/Stats'
 import Schedule from '@/components/Schedule'
+import Welcome from '@/components/Welcome'
 
 Vue.use(Router)
 
@@ -12,8 +12,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home
+      name: 'Welcome',
+      component: Welcome
     },
     {
       path: '/controller',
