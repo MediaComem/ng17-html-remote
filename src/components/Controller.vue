@@ -22,10 +22,10 @@ export default {
   },
   created () {
     if (Object.keys(this.$store.getters.getColor).length === 0) {
-      this.$router.push('/')
+      this.$router.push('/color_selection')
     }
     if (this.$store.state.pseudo.length === 0) {
-      this.$router.push('/')
+      this.$router.push('/color_selection')
     }
   },
   methods: {

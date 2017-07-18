@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="color-selection">
     <div class="container">
       <div>
         <swatches-picker :value="colors" @input="changeColor" />
@@ -18,7 +18,7 @@
   import { Swatches } from 'vue-color'
   import Input from '@/components/Input.vue'
   export default {
-    name: 'home',
+    name: 'color-selection',
     components: {
       'app-input': Input,
       'swatches-picker': Swatches

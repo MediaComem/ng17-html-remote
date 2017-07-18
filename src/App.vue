@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <app-sidenav></app-sidenav>
-    <router-view></router-view>
+    <router-view class="wrap"></router-view>
     <socket-io-logic></socket-io-logic>
   </div>
 </template>
@@ -22,6 +22,7 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -31,5 +32,13 @@ html, body {
   margin: 0px;
   padding: 0px;
 }
+
+.wrap {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+
 </style>
 <style src="vue-material/dist/vue-material.css"></style>
