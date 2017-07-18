@@ -7,11 +7,11 @@ import Schedule from '@/components/Schedule'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'Home',
       component: Home
     },
@@ -29,7 +29,8 @@ export default new Router({
       path: '/schedule',
       name: 'Programme',
       component: Schedule
-
     }
   ]
 })
+
+export default router

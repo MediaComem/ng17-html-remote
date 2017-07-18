@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import VueMaterial from 'vue-material'
 import App from './App'
+import { sync } from 'vuex-router-sync'
 import router from './router'
 import io from 'socket.io-client'
 import VueSocketio from 'vue-socket.io'
@@ -11,11 +12,13 @@ import { store } from './store'
 import Sidenav from '@/components/Sidenav'
 import SocketIO from '@/components/SocketIO'
 
-const socketInstance = io('http://10.192.115.172:3011')
+const socketInstance = io('http://localhost:3000')
 
 Vue.use(VueSocketio, socketInstance, store)
 Vue.use(VueMaterial)
 Vue.use(VueTouch, {name: 'v-touch'})
+
+sync(store, router)
 
 Vue.component('app-sidenav', Sidenav)
 Vue.component('socket-io-logic', SocketIO)

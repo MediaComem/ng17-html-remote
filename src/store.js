@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import router from '@/router'
 
 Vue.use(Vuex)
 
@@ -11,7 +12,8 @@ export const store = new Vuex.Store({
     color: {},
     stats: {
       ballCount: 0
-    }
+    },
+    redirect: '/home'
   },
   mutations: {
     SOCKET_CONNECT (state, status) {
@@ -35,6 +37,11 @@ export const store = new Vuex.Store({
     },
     addToBallCount (state) {
       state.stats.ballCount += 1
+    },
+    redirect (state, redirect) {
+      if (state.route.path === '/') {
+        router.push({'path': redirect})
+      }
     }
   },
   getters: {
@@ -56,6 +63,9 @@ export const store = new Vuex.Store({
       if (message.is_important) {
         context.dispatch('alertImportantMessage', message)
       }
+    },
+    socket_redirection (context, redirect) {
+      context.commit('redirect', redirect)
     }
   }
 })
