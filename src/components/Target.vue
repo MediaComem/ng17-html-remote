@@ -1,12 +1,12 @@
 <template>
-  <img class="target" :class="classObject" :style="{ left: posX + 'px', top: posY + 'px' }" ref='templeTarget' src='../assets/Target.png' />
+  <img class="target" :class="classObject" :style="{ height: 80 +'px', width: 80 + 'px', left: posX + 'px', top: posY + 'px' }" ref='templeTarget' src='../assets/Target.png' />
 </template>
 
 <script>
 export default {
   name: 'target',
   props: [
-    'posX', 'posY'
+    'posX', 'posY', 'size'
   ],
   data () {
     return {
@@ -27,8 +27,6 @@ export default {
 <style scoped>
 .target {
   position: absolute;
-  height: 80px;
-  width: 80px;
   top: 0px;
   left: 0px;
   pointer-events: none;

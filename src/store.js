@@ -13,6 +13,9 @@ export const store = new Vuex.Store({
     stats: {
       ballCount: 0
     },
+    game: {
+      currentBallCount: 0
+    },
     redirect: '/home'
   },
   mutations: {
@@ -35,13 +38,17 @@ export const store = new Vuex.Store({
     setPseudo (state, pseudo) {
       state.pseudo = pseudo
     },
-    addToBallCount (state) {
-      state.stats.ballCount += 1
-    },
     redirect (state, redirect) {
       if (state.route.path === '/') {
         router.push({'path': redirect})
       }
+    },
+    addBall (state) {
+      state.game.currentBallCount += 1
+    },
+    addToBallCount (state) {
+      state.stats.ballCount += 1
+      state.game.currentBallCount -= 1
     }
   },
   getters: {
@@ -66,6 +73,16 @@ export const store = new Vuex.Store({
     },
     socket_redirection (context, redirect) {
       context.commit('redirect', redirect)
+    },
+    addBall (context) {
+      setInterval(function () {
+        if (context.state.game.currentBallCount < 30) {
+          context.commit('addBall')
+        }
+      }, 2000)
+    },
+    addToBallCount (context) {
+      context.commit('addToBallCount')
     }
   }
 })

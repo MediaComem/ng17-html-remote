@@ -18,6 +18,35 @@ Vue.use(VueSocketio, socketInstance, store)
 Vue.use(VueMaterial)
 Vue.use(VueTouch, {name: 'v-touch'})
 
+Vue.material.registerTheme({
+  default: {
+    primary: {
+      color: 'light-blue',
+      hue: 400
+    },
+    accent: {
+      color: 'pink',
+      hue: 300
+    },
+    warn: 'red',
+    background: 'white'
+  },
+  pink: {
+    primary: {
+      color: 'light-blue',
+      hue: 300
+    },
+    accent: {
+      color: 'pink',
+      hue: 300
+    },
+    background: {
+      color: 'grey',
+      hue: 900
+    }
+  }
+})
+
 sync(store, router)
 
 Vue.component('app-sidenav', Sidenav)

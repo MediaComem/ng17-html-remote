@@ -41,7 +41,7 @@ export default {
       this.$refs.leftSidenav.close()
     },
     goHome () {
-      this.$router.push('/')
+      this.$router.push('/welcome')
       this.$refs.leftSidenav.close()
     }
   }
