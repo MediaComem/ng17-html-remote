@@ -2,13 +2,7 @@
   <div class="color-selection">
     <div class="container">
       <div>
-        <swatches-picker :value="colors" @input="changeColor" />
-      </div>
-      <div>
-        <app-input ref="input" :msg="pseudo" @messageChanged="messageChanged"></app-input>
-      </div>
-      <div>
-        <md-button @click="playRoute" class="md-raised md-primary">Jouer</md-button>
+        <swatches-picker :value="colors" @input="changeColor"/>
       </div>
     </div>
   </div>
@@ -30,9 +24,10 @@
       },
       changeColor (event) {
         this.$store.commit('setColor', event)
-      },
-      playRoute (event) {
-        this.$router.push('/controller')
+        console.log(this.$route.path)
+        if (this.$route.path === '/color-selection/controller' || this.$route.path === '/color-selection/controller-swipe') {
+          this.$router.push('/' + this.$route.params.type)
+        }
       }
     },
     created () {
@@ -41,8 +36,7 @@
     },
     data () {
       return {
-        colors: '',
-        pseudo: ''
+        colors: ''
       }
     }
   }
@@ -50,6 +44,10 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+.color-selection {
+  margin: 5px;
+}
+
 .container {
   display: grid;
 }

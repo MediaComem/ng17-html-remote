@@ -3,19 +3,19 @@
     <v-touch tag="a" v-on:tap="onTap">
       <img ref='templeImage' src='../assets/TempleBG.jpg' alt='temple' />
       <target ref='target' :posX='posX' :posY='posY' :size='size'></target>
-      <ballCount></ballCount>
+      <router-link to="/color-selection"><ballCount></ballCount></router-link>
     </v-touch>
   </div>
 </template>
 
 <script>
 import Target from '@/components/Target.vue'
-import Circle from '@/components/Circle.vue'
+import Counter from '@/components/Counter.vue'
 export default {
   name: 'controller',
   components: {
     'target': Target,
-    'ballCount': Circle
+    'ballCount': Counter
   },
   data () {
     return {
@@ -26,7 +26,7 @@ export default {
   },
   created () {
     if (Object.keys(this.$store.getters.getColor).length === 0) {
-      this.$router.push('/color_selection')
+      this.$router.push('/color-selection/controller')
     }
   },
   methods: {
@@ -35,10 +35,8 @@ export default {
         this.$refs.target.displayTarget()
         var xPos = e.srcEvent.layerX
         var yPos = e.srcEvent.layerY - this.$refs.templeImage.offsetTop
-        console.log('ref', this.$refs.target.$el.width, this.$refs.target.$el.height)
         this.posX = xPos - (this.size / 2)
         this.posY = yPos - (this.size / 2)
-        console.log(this.posX, this.posY)
         var xRatio = (-20 * (xPos / this.$refs.templeImage.width)) + 9.5
         var yRatio = 28 * (1 - (yPos / this.$refs.templeImage.height)) - 1
         this.$store.commit('addToBallCount')

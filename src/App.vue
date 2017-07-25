@@ -1,8 +1,8 @@
 <template>
   <div id="app">
+    <socket-io-logic></socket-io-logic>
     <app-sidenav></app-sidenav>
     <router-view class="wrap"></router-view>
-    <socket-io-logic></socket-io-logic>
   </div>
 </template>
 

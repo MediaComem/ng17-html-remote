@@ -11,9 +11,12 @@ export const store = new Vuex.Store({
     pseudo: '',
     color: {},
     stats: {
-      ballCount: 0
+      ballCount: 0,
+      points: 0
     },
     game: {
+      maxBall: 30,
+      ballTimeReset: 2000,
       currentBallCount: 0
     },
     redirect: '/home'
@@ -22,8 +25,11 @@ export const store = new Vuex.Store({
     SOCKET_CONNECT (state, status) {
       state.connect = true
     },
-    NEW_MESSAGE_RECEIVED (state, message) {
-      state.message = message
+    ADD_POINTS (state, points) {
+      state.stats.points += parseInt(points)
+      if (window.navigator && window.navigator.vibrate) {
+        window.navigator.vibrate(state.stats.points * 5)
+      }
     },
     setColor (state, color) {
       state.color = {...color,
@@ -64,11 +70,18 @@ export const store = new Vuex.Store({
       return true
     },
     socket_msg (context, message) {
-      console.log('message', message)
-      context.dispatch('message', message)
-      context.commit('NEW_MESSAGE_RECEIVED', message)
-      if (message.is_important) {
-        context.dispatch('alertImportantMessage', message)
+      console.log('got message')
+      if (message.msgType === 'wait') {
+
+      } else {
+        console.log('message', message)
+        if (message.msgType === 'point') {
+          context.commit('ADD_POINTS', message.points)
+        }
+
+        if (message.is_important) {
+          context.dispatch('alertImportantMessage', message)
+        }
       }
     },
     socket_redirection (context, redirect) {
@@ -76,10 +89,10 @@ export const store = new Vuex.Store({
     },
     addBall (context) {
       setInterval(function () {
-        if (context.state.game.currentBallCount < 30) {
+        if (context.state.game.currentBallCount < context.state.game.maxBall) {
           context.commit('addBall')
         }
-      }, 2000)
+      }, context.state.game.ballTimeReset)
     },
     addToBallCount (context) {
       context.commit('addToBallCount')

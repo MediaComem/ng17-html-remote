@@ -14,10 +14,13 @@
         </div>
         <md-list>
           <md-list-item>
-            <md-icon>send</md-icon><span><router-link @click.native="close()" to="/color_selection">Color selection</router-link></span>
+            <md-icon>send</md-icon><span><a @click="location()">Color selection</a></span>
           </md-list-item>
           <md-list-item>
             <md-icon>move_to_inbox</md-icon><span><router-link @click.native="close()" to="/controller">Controller</router-link></span>
+          </md-list-item>
+          <md-list-item>
+            <md-icon>move_to_inbox</md-icon><span><router-link @click.native="close()" to="/controller-swipe">Controller swipe</router-link></span>
           </md-list-item>
           <md-list-item>
             <md-icon>show_chart</md-icon><span><router-link @click.native="close()" to="/stats">Stats</router-link></span>
@@ -36,6 +39,15 @@ export default {
   methods: {
     toggleLeftSidenav () {
       this.$refs.leftSidenav.toggle()
+    },
+    location () {
+      console.log(this.$route.path)
+      if (this.$route.path === '/controller' || this.$route.path === '/controller-swipe') {
+        this.$router.push('/color-selection' + this.$route.path)
+      } else {
+        this.$router.push('/color-selection/waiting')
+      }
+      this.$refs.leftSidenav.close()
     },
     close () {
       this.$refs.leftSidenav.close()

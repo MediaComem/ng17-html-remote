@@ -1,5 +1,5 @@
 <template>
-  <img class="target" :class="classObject" :style="{ height: 80 +'px', width: 80 + 'px', left: posX + 'px', top: posY + 'px' }" ref='templeTarget' src='../assets/Target.png' />
+  <img class="target" :class="classObject" :style="{ height: size +'px', width: size + 'px', left: posX + 'px', top: posY + 'px' }" ref='templeTarget' src='../assets/Target.png' />
 </template>
 
 <script>

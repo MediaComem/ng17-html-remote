@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="schedule">
      <table>
       <th colspan="2">
         <td>{{ night1.tag }}</td>
@@ -33,30 +33,41 @@ const PAUSE = 'Pause'
 const INTRO = 'Intro'
 
 export default {
+  name: 'schedule',
   data () {
     return {
       'night1': {
         'tag': '25 août',
-        'schedule': [{'time': '20h30', 'tag': INTRO},
-      {'time': '20h45', 'tag': GAME},
-      {'time': '21h00', 'tag': PROJ},
-      {'time': '21h45', 'tag': GAME},
-      {'time': '22h00', 'tag': PAUSE},
-      {'time': '22h15', 'tag': GAME},
-      {'time': '22h30', 'tag': PROJ},
-      {'time': '23h15', 'tag': GAME}
-        ] },
+        'schedule': [
+          {'time': '20h30', 'tag': INTRO},
+          {'time': '20h45', 'tag': GAME},
+          {'time': '21h00', 'tag': PROJ},
+          {'time': '21h45', 'tag': GAME},
+          {'time': '22h00', 'tag': PAUSE},
+          {'time': '22h15', 'tag': GAME},
+          {'time': '22h30', 'tag': PROJ},
+          {'time': '23h15', 'tag': GAME}
+        ]
+      },
       'night2': {
         'tag': '26 août',
-        'schedule': [{'time': '20h30', 'tag': INTRO},
-      {'time': '20h45', 'tag': GAME},
-      {'time': '21h00', 'tag': PROJ},
-      {'time': '21h45', 'tag': GAME},
-      {'time': '22h00', 'tag': PAUSE},
-      {'time': '22h15', 'tag': GAME},
-      {'time': '22h30', 'tag': PROJ},
-      {'time': '23h15', 'tag': GAME}
-        ]} }
+        'schedule': [
+          {'time': '20h30', 'tag': INTRO},
+          {'time': '20h45', 'tag': GAME},
+          {'time': '21h00', 'tag': PROJ},
+          {'time': '21h45', 'tag': GAME},
+          {'time': '22h00', 'tag': PAUSE},
+          {'time': '22h15', 'tag': GAME},
+          {'time': '22h30', 'tag': PROJ},
+          {'time': '23h15', 'tag': GAME}
+        ]
+      }
+    }
   }
 }
 </script>
+<style>
+.schedule {
+  margin: 5px;
+}
+</style>

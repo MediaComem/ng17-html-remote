@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import ColorSelection from '@/components/Color_selection'
+import ControllerSwipe from '@/components/Controller_swipe'
 import Controller from '@/components/Controller'
 import Stats from '@/components/Stats'
 import Schedule from '@/components/Schedule'
@@ -12,7 +13,7 @@ const router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/color_selection',
+      path: '/color-selection/:type',
       name: 'Color Selection',
       component: ColorSelection
     },
@@ -35,6 +36,11 @@ const router = new Router({
       path: '/schedule',
       name: 'Programme',
       component: Schedule
+    },
+    {
+      path: '/controller-swipe',
+      name: 'Controller Swipe',
+      component: ControllerSwipe
     }
   ]
 })

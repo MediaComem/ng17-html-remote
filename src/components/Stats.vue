@@ -1,6 +1,7 @@
 <template>
   <div class="stats">
-    <p>Shot count: {{ $store.state.stats.ballCount }}</p>
+    <p>Tire: {{ $store.state.stats.ballCount }}</p>
+    <p>Points: {{ $store.state.stats.points }}</p>
   </div>
 </template>
 
@@ -14,5 +15,6 @@ export default {
 <style scoped>
 .stats {
   position: relative;
+  margin: 5px;
 }
 </style>
