@@ -1,8 +1,8 @@
 <template>
   <div class="controller">
-    <v-touch tag="a" v-on:tap="onTap">
-      <img ref='templeImage' src='../assets/TempleBG.jpg' alt='temple' />
+    <v-touch class="touchArea" tag="div" v-on:tap="onTap">
       <target ref='target' :posX='posX' :posY='posY' :size='size'></target>
+      <img ref='templeImage' src='../assets/TempleBG.jpg' alt='temple' />
       <router-link to="/color-selection"><ballCount></ballCount></router-link>
     </v-touch>
   </div>
@@ -31,6 +31,7 @@ export default {
   },
   methods: {
     onTap (e) {
+      console.log('hi')
       if (this.$store.state.game.currentBallCount > 0) {
         this.$refs.target.displayTarget()
         var xPos = e.srcEvent.layerX
@@ -61,5 +62,8 @@ export default {
 <style scoped>
 .controller {
   position: relative;
+}
+.touchArea {
+  z-index: 1;
 }
 </style>
