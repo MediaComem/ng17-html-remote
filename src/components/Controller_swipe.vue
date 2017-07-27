@@ -1,6 +1,7 @@
 <template>
   <div class="controller-swipe">
-    <v-touch :style="touchArea" tag="div" v-on:panstart="panStart" v-on:panmove="panMove" v-on:panend="panEnd">
+    <slider v-if="noGyro" id="angle-lever" :angle="angle" @valueChanged="angleChange($event)"></slider>
+    <v-touch :style="touchArea" tag="div" @panstart="panStart" @panmove="panMove" @panend="panEnd">
       <router-link class="link" to="/color-selection"><ballCount class="ballcount"></ballCount></router-link>
       <div class="swip-area">
         <ball ref="projectile" id="projectile" class="ball" :size="size" :style="ballSize"></ball>
@@ -15,6 +16,7 @@
 import Counter from '@/components/Counter.vue'
 import Ball from '@/components/Circle.vue'
 import Vector from '@/components/Vector.vue'
+import Slider from '@/components/Angle_lever.vue'
 
 const ballsize = 80
 var shooting = false
@@ -27,7 +29,25 @@ export default {
   components: {
     'ballCount': Counter,
     'ball': Ball,
-    'vector': Vector
+    'vector': Vector,
+    'slider': Slider
+  },
+  created () {
+    if (Object.keys(this.$store.getters.getColor).length === 0) {
+      this.$router.push('/color-selection/controller-swipe')
+    }
+    var component = this
+    window.addEventListener('deviceorientation', function (event) {
+      console.log(event.beta)
+      if (event.beta) {
+        component.noGyro = false
+        tilt = event.beta
+      } else {
+        component.noGyro = true
+        tilt = component.angle
+      }
+      console.log('noGyro: ', this.noGyro)
+    })
   },
   data () {
     return {
@@ -38,12 +58,9 @@ export default {
         bottom: bottom + 'px',
         left: left + 'px'
       },
-      size: ballsize
-    }
-  },
-  created () {
-    if (Object.keys(this.$store.getters.getColor).length === 0) {
-      this.$router.push('/color-selection/controller-swipe')
+      size: ballsize,
+      angle: 45,
+      noGyro: ''
     }
   },
   methods: {
@@ -62,6 +79,9 @@ export default {
     },
     panEnd (e) {
       if (shooting === true) {
+        if (this.noGyro === true) {
+          tilt = this.angle
+        }
         shooting = false
         this.$store.commit('addToBallCount')
         const mag = this.$refs.vector.getMagnitude(e.velocityX, e.velocityY)
@@ -71,11 +91,10 @@ export default {
           'direction': {
             'x': -e.velocityX / mag,
             'y': -(tilt / 90) * (e.velocityY / mag),
-            'z': (tilt / 90) * (e.velocityY / mag)
+            'z': -(1 + (tilt / 90) * (e.velocityY / mag))
           },
           'velocity': Math.abs(mag) * 1500
         }
-        console.log((tilt / 90))
         console.log('vx:' + e.velocityX, 'vy:' + e.velocityY, 'v:' + mag)
         console.log(data.direction.x, data.direction.y, data.direction.z)
         this.$socket.emit('msg', data)
@@ -103,17 +122,13 @@ export default {
           }
         }, 10)
       }
+    },
+    angleChange (e) {
+      this.angle = parseInt(e)
     }
   }
 }
-if (window.DeviceOrientationEvent) {
-  window.addEventListener('deviceorientation', function (eventData) {
-    tilt = eventData.beta
-  }, false)
-} else {
-  tilt = 45
-  console.log('browser not supported')
-}
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -140,5 +155,11 @@ if (window.DeviceOrientationEvent) {
 }
 .right {
   float: right;
+}
+.angle-lever {
+  position: absolute;
+  z-index: 100;
+  right: 0px;
+  bottom: 0px;
 }
 </style>
