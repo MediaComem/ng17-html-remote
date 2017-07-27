@@ -28,7 +28,7 @@ export const store = new Vuex.Store({
     ADD_POINTS (state, points) {
       state.stats.points += parseInt(points)
       if (window.navigator && window.navigator.vibrate) {
-        window.navigator.vibrate(state.stats.points * 5)
+        window.navigator.vibrate(parseInt(points) * 5)
       }
     },
     setColor (state, color) {

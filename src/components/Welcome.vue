@@ -1,24 +1,20 @@
 <template>
-  <div class="wrap">
-
-  <h1>Amplified Reality</h1>
-  <p>Amplified Reality est une famille de jeux conçu pour la façade du Temple Pestalozzi.</p>
-  <p>Téléchargez l'application <a href="#">iOS</a> où <a href="#">Android</a> pour jouer.</p>
-
-
-<md-button v-if="supported" v-bind:href="dllink" class="md-raised md-primary" ref="dlbutton">Téléchargez l'application</md-button>
-<p v-else>Il semble que vous n'êtes pas sur iOS ou Android. Utilisez l'intérfaçe web.</p>
-
-<!-- <a :href="googleplay-link"><img alt='Disponible sur Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/fr_badge_web_generic.png'/></a> -->
-
-<div><a href="/webcontroller">Controlleur web</a></div>
+  <div class="welcome">
+    <h1>Amplified Reality</h1>
+    <p>Amplified Reality est une famille de jeux conçu pour la façade du Temple Pestalozzi.</p>
+    <p>Téléchargez l'application <a href="#">iOS</a> où <a href="#">Android</a> pour jouer.</p>
+    <md-button v-if="supported" v-bind:href="dllink" class="md-raised md-primary" ref="dlbutton">Téléchargez l'application</md-button>
+    <p v-else>Il semble que vous n'êtes pas sur iOS ou Android. Utilisez l'intérfaçe web.</p>
+    <!-- <a :href="googleplay-link"><img alt='Disponible sur Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/fr_badge_web_generic.png'/></a> -->
+    <div><a href="/webcontroller">Controlleur web</a></div>
   </div>
 </template>
 
 <script>
 
 export default {
-  created: function () {
+  name: 'welcome',
+  created () {
     var _os = getMobileOperatingSystem()
 
     switch (_os) {
@@ -62,3 +58,8 @@ function getMobileOperatingSystem () {
 }
 
 </script>
+<style>
+.welcome {
+  margin: 0 5px;
+}
+</style>

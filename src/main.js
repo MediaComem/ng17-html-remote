@@ -18,35 +18,48 @@ const socketInstance = io('http://ng2.comem.ch')
 Vue.use(VueSocketio, socketInstance, store)
 Vue.use(VueMaterial)
 Vue.use(VueTouch, {name: 'v-touch'})
-
-Vue.material.registerTheme({
-  default: {
+Vue.material.registerPalette('ng17-pink', {
+  500: '#D63C96',
+  900: '#D63C96',
+  A100: '#ffffff',
+  A900: '#292928',
+  darkText: [ 500, 900, 'A100', 'A900' ]
+})
+Vue.material.registerPalette('ng17-blue', {
+  500: '#2995A8',
+  900: '#2995A8',
+  A100: '#ffffff',
+  A900: '#292928',
+  darkText: [ 500, 900, 'A900', 'A100' ]
+})
+Vue.material.registerTheme(
+  'default', {
     primary: {
-      color: 'light-blue',
-      hue: 400
+      color: 'ng17-blue',
+      hue: 900,
+      textColor: 'white'
     },
     accent: {
-      color: 'pink',
-      hue: 300
+      color: 'ng17-pink',
+      hue: 500,
+      textColor: 'white'
     },
     warn: 'red',
     background: 'white'
   },
-  pink: {
+  'pink', {
     primary: {
-      color: 'light-blue',
-      hue: 300
+      color: 'ng17-pink',
+      hue: 500
     },
     accent: {
-      color: 'pink',
-      hue: 300
+      color: 'ng17-blue',
+      hue: 500
     },
-    background: {
-      color: 'grey',
-      hue: 900
-    }
+    warn: 'red',
+    background: 'white'
   }
-})
+)
 
 sync(store, router)
 
