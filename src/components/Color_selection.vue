@@ -2,41 +2,38 @@
   <div class="color-selection">
     <div class="container">
       <div>
-        <swatches-picker :value="colors" @input="changeColor"/>
+        <colorPicker :colors='colors' @updateColor='changeColor' ></colorPicker>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import { Swatches } from 'vue-color'
-  import Input from '@/components/Input.vue'
+  import colorPicker from '@/components/Color_picker.vue'
   export default {
     name: 'color-selection',
     components: {
-      'app-input': Input,
-      'swatches-picker': Swatches
+      colorPicker
     },
     methods: {
       messageChanged (event) {
         this.pseudo = event
         this.$store.commit('setPseudo', this.pseudo)
       },
-      changeColor (event) {
-        this.$store.commit('setColor', event)
-        console.log(this.$route.path)
-        if (this.$route.path === '/color-selection/controller' || this.$route.path === '/color-selection/controller-swipe') {
-          this.$router.push('/' + this.$route.params.type)
-        }
+      changeColor (color) {
+        console.log('this is the color', color)
+        this.$store.commit('setColor', color)
+        this.$router.push('/play')
       }
     },
     created () {
-      this.colors = this.$store.getters.getColor
+      this.colors = this.$store.state.colors
+      console.log(this.colors)
       this.pseudo = this.$store.state.pseudo
     },
     data () {
       return {
-        colors: ''
+        colors: this.$store.state.color
       }
     }
   }
