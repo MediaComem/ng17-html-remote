@@ -3,7 +3,8 @@
     <v-touch class="touchArea" tag="div" v-on:tap="onTap">
       <target ref='target' :posX='posX' :posY='posY' :size='size'></target>
       <img ref='templeImage' src='../assets/TempleBG.jpg' alt='temple' />
-      <router-link to="/color-selection"><ballCount></ballCount></router-link>
+      <a @click="goToColorSelection()"><ballCount></ballCount></a>
+      <div class="right text">points: {{ $store.state.stats.points }}</div>
     </v-touch>
   </div>
 </template>
@@ -26,7 +27,6 @@ export default {
   },
   methods: {
     onTap (e) {
-      console.log('hi')
       if (this.$store.state.game.currentBallCount > 0) {
         this.$refs.target.displayTarget()
         var xPos = e.srcEvent.layerX
@@ -48,6 +48,9 @@ export default {
         }
         this.$socket.emit('msg', data)
       }
+    },
+    goToColorSelection () {
+      this.$socket.emit('get colors')
     }
   }
 }
@@ -55,10 +58,20 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.swip-area {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 .controller {
   position: relative;
 }
 .touchArea {
   z-index: 1;
+}
+.right {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 </style>

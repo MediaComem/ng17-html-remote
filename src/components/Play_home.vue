@@ -22,21 +22,28 @@
       'queue': Queue
     },
     created () {
-      console.log('play')
       this.$socket.emit('play')
+    },
+    computed: {
+      gameType () {
+        return this.$store.state.gameType
+      },
+      playing () {
+        return this.$store.state.playing
+      }
     },
     methods: {
       isAGameRunning () {
-        return this.$store.state.gameType !== 'none'
+        return this.gameType !== 'none'
       },
       isPlaying () {
-        return this.$store.state.playing
+        return this.playing
       },
       isTapController () {
-        return this.$store.state.gameType === 'destruction'
+        return this.gameType === 'destruction'
       },
       isSwipeController () {
-        return this.$store.state.gameType === 'bucket'
+        return this.gameType === 'bucket'
       }
     }
   }

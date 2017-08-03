@@ -1,9 +1,7 @@
 <template>
   <div class="color-selection">
     <div class="container">
-      <div>
-        <colorPicker :colors='colors' @updateColor='changeColor' ></colorPicker>
-      </div>
+      <colorPicker :colors='colors' @updateColor='changeColor' ></colorPicker>
     </div>
   </div>
 </template>
@@ -22,18 +20,17 @@
       },
       changeColor (color) {
         console.log('this is the color', color)
+        this.$socket.emit('set new color', {'newColor': color, 'oldColor': this.$store.state.color})
         this.$store.commit('setColor', color)
         this.$router.push('/play')
       }
     },
     created () {
-      this.colors = this.$store.state.colors
-      console.log(this.colors)
       this.pseudo = this.$store.state.pseudo
     },
     data () {
       return {
-        colors: this.$store.state.color
+        colors: this.$store.state.colors
       }
     }
   }
@@ -47,13 +44,6 @@
 
 .container {
   display: grid;
-}
-
-.vue-color__swatches__box {
-  width: 320px;
-  margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .vue-color__swatches {

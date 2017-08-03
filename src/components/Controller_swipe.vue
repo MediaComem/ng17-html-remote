@@ -2,7 +2,7 @@
   <div class="controller-swipe">
     <slider v-if="noGyro" id="angle-lever" :angle="angle" @valueChanged="angleChange($event)"></slider>
     <v-touch :style="touchArea" tag="div" @panstart="panStart" @panmove="panMove" @panend="panEnd">
-      <router-link class="link" to="/color-selection"><ballCount class="ballcount"></ballCount></router-link>
+      <a class="link" @click="goToColorSelection()"><ballCount class="ballcount"></ballCount></a>
       <div class="swip-area">
         <ball ref="projectile" id="projectile" class="ball" :size="size" :style="ballSize"></ball>
         <div class="right text">points: {{ $store.state.stats.points }}</div>
@@ -33,7 +33,6 @@ export default {
     'slider': Slider
   },
   created () {
-    this.$socket.emit('get colors')
     var component = this
     window.addEventListener('deviceorientation', function (event) {
       if (event.beta) {
@@ -91,8 +90,6 @@ export default {
           },
           'velocity': Math.abs(mag) * 1500
         }
-        console.log('vx:' + e.velocityX, 'vy:' + e.velocityY, 'v:' + mag)
-        console.log(data.direction.x, data.direction.y, data.direction.z)
         this.$socket.emit('msg', data)
         const inst = this
         const numberOfFrames = e.deltaTime
@@ -121,6 +118,9 @@ export default {
     },
     angleChange (e) {
       this.angle = parseInt(e)
+    },
+    goToColorSelection () {
+      this.$socket.emit('get colors')
     }
   }
 }
@@ -151,6 +151,7 @@ export default {
 }
 .right {
   float: right;
+  margin: 5px;
 }
 .angle-lever {
   position: absolute;

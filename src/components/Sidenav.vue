@@ -33,7 +33,7 @@
                   </md-list-item>
                   <md-list-item class="md-inset">
                     <md-icon>color_lens</md-icon>
-                    <span><router-link @click.native="close()" to="/color-selection">couleur</router-link></span>
+                    <span><a @click="toColorSelection()">couleur</a></span>
                   </md-list-item>
                   <md-list-item class="md-inset">
                     <md-icon>show_chart</md-icon>
@@ -72,6 +72,9 @@ export default {
     goHome () {
       this.$router.push('/welcome')
       this.$refs.leftSidenav.close()
+    },
+    toColorSelection () {
+      this.$socket.emit('get colors')
     }
   }
 }

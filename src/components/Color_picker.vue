@@ -1,32 +1,33 @@
 <template>
   <div class="color-picker">
-    <customSwatch v-for="color in colors" :key="color.id" :color="color.hex" v-on:tap="onTap"></customSwatch>
+    <customSwatch v-for="color in colors" :key="color.id" :color="color" @colorSelected="colorSelected"></customSwatch>
   </div>
 </template>
 
 <script>
-import swatch from '@/components/Swatch.vue'
+import colorSwatch from '@/components/Swatch.vue'
 export default {
   name: 'color-picker',
   components: {
-    'customSwatch': swatch
+    'customSwatch': colorSwatch
   },
   props: [
     'colors'
   ],
-  created () {
-    console.log('colors', this.colors)
-    console.log('colors2', this.$store.state.color)
-  },
   methods: {
-    onTap (e) {
-      console.log('what all that', e, this)
-      this.$emit('updateColor', this)
+    colorSelected (e) {
+      this.$emit('updateColor', e)
     }
+
   }
 }
 </script>
 
 <style>
-
+  .color-picker {
+    display: flex;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 </style>

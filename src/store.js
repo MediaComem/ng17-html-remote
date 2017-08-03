@@ -8,11 +8,11 @@ export const store = new Vuex.Store({
   state: {
     connect: false,
     playing: false,
+    gameType: 'none',
     gameRunning: 'none',
     message: null,
     pseudo: '',
     colors: {},
-    hexColors: [],
     color: {},
     queue: {
       position: 0,
@@ -41,8 +41,10 @@ export const store = new Vuex.Store({
       }
     },
     launchGame (state, data) {
+      if (!state.playing) {
+        state.color = data.color
+      }
       state.playing = true
-      // router.push({'path': '/play'})
     },
     waitInQueue (state, data) {
       state.queue.position = data.position
@@ -58,9 +60,8 @@ export const store = new Vuex.Store({
       state.pseudo = pseudo
     },
     newOrderedColors (state, colors) {
-      console.log('new colors', colors)
+      router.push({'path': '/color-selection'})
       state.colors = colors
-      // state.hexColors = data.hexOnlyColors
     },
     redirect (state, redirect) {
       state.redirect = redirect
@@ -83,22 +84,19 @@ export const store = new Vuex.Store({
     },
     getColor (state) {
       return state.color
+    },
+    getGameType (state) {
+      return state.gameType
     }
   },
   actions: {
     socket_msg (context, message) {
-      console.log('got message')
-      if (message.msgType === 'wait') {
-        console.log('wait', message)
-      } else {
-        console.log('message', message)
-        if (message.msgType === 'point') {
-          context.commit('ADD_POINTS', message.points)
-        }
+      if (message.msgType === 'point') {
+        context.commit('ADD_POINTS', message.points)
+      }
 
-        if (message.is_important) {
-          context.dispatch('alertImportantMessage', message)
-        }
+      if (message.is_important) {
+        context.dispatch('alertImportantMessage', message)
       }
     },
     socket_setup (context, data) {
@@ -113,26 +111,20 @@ export const store = new Vuex.Store({
         type: 'client'
       })
     },
-    socket_gameRunung (context, data) {
-      context.commit('gameRunning', data)
-    },
     socket_launchGame (context, data) {
       context.commit('launchGame', data)
     },
     socket_waitInQueue (context, data) {
-      console.log('wait in queue', data)
       context.commit('waitInQueue', data)
     },
     socket_unityReconnect (context, data) {
       context.commit('setGameType', data)
     },
     socket_newOrderedColors (context, data) {
-      console.log('sup')
-      // var hexColor = []
-      // for (var i = 0; i < data.length; i++) {
-      //   hexColor.push(data[i])
-      // }
       context.commit('newOrderedColors', data)
+    },
+    socket_serverDisconnected (context, data) {
+      context.commit('setGameType', 'none')
     },
     addBall (context) {
       setInterval(function () {
