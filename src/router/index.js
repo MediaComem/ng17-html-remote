@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import ColorSelection from '@/components/Color_selection'
-import ControllerSwipe from '@/components/Controller_swipe'
-import Controller from '@/components/Controller'
+import PlayHome from '@/components/Play_home'
 import Stats from '@/components/Stats'
 import Schedule from '@/components/Schedule'
 import Welcome from '@/components/Welcome'
+import Queue from '@/components/Queue'
 
 Vue.use(Router)
 
@@ -13,7 +13,7 @@ const router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/color-selection/:type',
+      path: '/color-selection',
       name: 'Color Selection',
       component: ColorSelection
     },
@@ -23,9 +23,9 @@ const router = new Router({
       component: Welcome
     },
     {
-      path: '/controller',
-      name: 'Controller',
-      component: Controller
+      path: '/play',
+      name: 'play',
+      component: PlayHome
     },
     {
       path: '/stats',
@@ -38,9 +38,9 @@ const router = new Router({
       component: Schedule
     },
     {
-      path: '/controller-swipe',
-      name: 'Controller Swipe',
-      component: ControllerSwipe
+      path: '/queue/:type',
+      name: 'Queue',
+      component: Queue
     }
   ]
 })

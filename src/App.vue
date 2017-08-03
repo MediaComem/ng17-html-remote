@@ -38,7 +38,6 @@ html, body {
 
 .wrap {
   max-width: 480px;
-  margin: 0 auto;
   text-align: left;
 }
 

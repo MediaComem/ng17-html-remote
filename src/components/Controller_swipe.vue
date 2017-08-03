@@ -33,12 +33,9 @@ export default {
     'slider': Slider
   },
   created () {
-    if (Object.keys(this.$store.getters.getColor).length === 0) {
-      this.$router.push('/color-selection/controller-swipe')
-    }
+    this.$socket.emit('get colors')
     var component = this
     window.addEventListener('deviceorientation', function (event) {
-      console.log(event.beta)
       if (event.beta) {
         component.noGyro = false
         tilt = event.beta
@@ -46,7 +43,6 @@ export default {
         component.noGyro = true
         tilt = component.angle
       }
-      console.log('noGyro: ', this.noGyro)
     })
   },
   data () {

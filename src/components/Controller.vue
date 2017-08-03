@@ -24,11 +24,6 @@ export default {
       size: 80
     }
   },
-  created () {
-    if (Object.keys(this.$store.getters.getColor).length === 0) {
-      this.$router.push('/color-selection/controller')
-    }
-  },
   methods: {
     onTap (e) {
       console.log('hi')
