@@ -45,7 +45,6 @@ export const store = new Vuex.Store({
       // router.push({'path': '/play'})
     },
     waitInQueue (state, data) {
-      console.log('update', data)
       state.queue.position = data.position
       state.queue.total = data.total
     },

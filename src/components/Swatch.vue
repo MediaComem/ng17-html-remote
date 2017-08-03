@@ -7,7 +7,6 @@
 <script>
 export default {
   name: 'swatch',
-  el: 'color',
   props: [
     'color'
   ],
