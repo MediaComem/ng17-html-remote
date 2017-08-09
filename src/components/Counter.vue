@@ -1,6 +1,6 @@
 <template>
   <div class="counter">
-    <dot :size="size" ></dot>
+    <dot :size="size" :color="ballColor"></dot>
     <div class="count"> Count: {{ getBallCount }} </div>
   </div>
 </template>
@@ -18,7 +18,8 @@ export default {
   ],
   data () {
     return {
-      size: 12
+      size: 12,
+      ballColor: this.$store.getters.getColor.hex
     }
   },
   created () {

@@ -4,7 +4,7 @@
     <v-touch :style="touchArea" tag="div" @panstart="panStart" @panmove="panMove" @panend="panEnd">
       <a class="link" @click="goToColorSelection()"><ballCount class="ballcount"></ballCount></a>
       <div class="swip-area">
-        <ball ref="projectile" id="projectile" class="ball" :size="size" :style="ballSize"></ball>
+        <ball ref="projectile" id="projectile" class="ball" :color="color.player" :size="size" :style="ballSize"></ball>
         <div class="right text">points: {{ $store.state.stats.points }}</div>
       </div>
     </v-touch>
@@ -52,6 +52,9 @@ export default {
       ballSize: {
         bottom: bottom + 'px',
         left: left + 'px'
+      },
+      color: {
+        player: this.$store.getters.getColor.hex
       },
       size: ballsize,
       angle: 45,

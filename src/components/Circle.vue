@@ -6,12 +6,12 @@
 export default {
   name: 'circle',
   props: [
-    'size'
+    'size', 'color'
   ],
   data () {
     return {
       circle: {
-        background: this.$store.getters.getColor.hex,
+        background: this.color,
         height: this.size + 'px',
         width: this.size + 'px',
         '-moz-border-radius': this.size / 2 + 'px',

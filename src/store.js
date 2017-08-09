@@ -33,11 +33,21 @@ export const store = new Vuex.Store({
     connect (state) {
       state.connect = true
       state.playing = false
+      if (typeof (Storage) !== 'undefined') {
+        var stats = window.localStorage.getItem('stats')
+        stats = JSON.parse(stats)
+        if (stats !== null) {
+          state.stats = stats
+        }
+      }
     },
     ADD_POINTS (state, points) {
       state.stats.points += parseInt(points)
       if (window.navigator && window.navigator.vibrate) {
         window.navigator.vibrate(parseInt(points) * 5)
+      }
+      if (typeof (Storage) !== 'undefined') {
+        window.localStorage.setItem('stats', JSON.stringify(state.stats))
       }
     },
     launchGame (state, data) {
@@ -70,12 +80,31 @@ export const store = new Vuex.Store({
         router.push({'path': redirect})
       }
     },
+    setBallSettings (state, data) {
+      console.log(data)
+      if (data.ballRate != null) {
+        state.game.ballTimeReset = data.ballRate * 1000
+      }
+      if (data.ballMax != null) {
+        state.game.maxBall = data.ballMax
+      }
+    },
     addBall (state) {
       state.game.currentBallCount += 1
     },
     addToBallCount (state) {
       state.stats.ballCount += 1
       state.game.currentBallCount -= 1
+      if (typeof (Storage) !== 'undefined') {
+        window.localStorage.setItem('stats', JSON.stringify(state.stats))
+      }
+    },
+    clearStats (state) {
+      state.stats.ballCount = 0
+      state.stats.points = 0
+      if (typeof (Storage) !== 'undefined') {
+        window.localStorage.setItem('stats', JSON.stringify(state.stats))
+      }
     }
   },
   getters: {
@@ -111,6 +140,12 @@ export const store = new Vuex.Store({
         type: 'client'
       })
     },
+    socket_redirection (context, redirect) {
+      context.commit('redirect', redirect)
+    },
+    socket_changeGameType (context, gameType) {
+      context.commit('setGameType', gameType)
+    },
     socket_launchGame (context, data) {
       context.commit('launchGame', data)
     },
@@ -126,11 +161,16 @@ export const store = new Vuex.Store({
     socket_serverDisconnected (context, data) {
       context.commit('setGameType', 'none')
     },
+    socket_setBallSettings (context, data) {
+      context.commit('setBallSettings', data)
+    },
     addBall (context) {
-      setInterval(function () {
+      setTimeout(function () {
+        console.log(context.state.game.currentBallCount, context.state.game.maxBall)
         if (context.state.game.currentBallCount < context.state.game.maxBall) {
           context.commit('addBall')
         }
+        context.dispatch('addBall')
       }, context.state.game.ballTimeReset)
     },
     addToBallCount (context) {
