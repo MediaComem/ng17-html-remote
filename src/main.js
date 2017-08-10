@@ -18,6 +18,15 @@ const socketInstance = io('http://10.192.115.153:3011')
 
 Vue.use(VueSocketio, socketInstance, store)
 Vue.use(VueMaterial)
+VueTouch.registerCustomEvent('openSidebar', {
+  type: 'swipe',
+  direction: 'right'
+})
+VueTouch.registerCustomEvent('clostSidebar', {
+  type: 'swipe',
+  direction: 'left'
+})
+
 Vue.use(VueTouch, {name: 'v-touch'})
 Vue.material.registerPalette('ng17-pink', {
   500: '#D63C96',
