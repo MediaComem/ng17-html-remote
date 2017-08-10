@@ -87,6 +87,9 @@ export default {
 }
 </script>
 <style scoped>
+  .md-toolbar {
+    z-index: 2;
+  }
   .md-icon.sidebar-home {
     margin-left: 20px;
     margin-right: 20px;

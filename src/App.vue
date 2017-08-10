@@ -2,7 +2,7 @@
   <div id="app">
     <socket-io-logic></socket-io-logic>
     <v-touch id="main-touch-area" tag="div" v-on:openSidebar="onSwipeRight" v-on:clostSidebar="onSwipeLeft">
-      <app-sidenav ref="sideNav"></app-sidenav>
+      <app-sidenav class="nav" ref="sideNav"></app-sidenav>
       <router-view class="wrap"></router-view>
     </v-touch>
   </div>
