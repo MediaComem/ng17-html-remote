@@ -1,20 +1,27 @@
 <template>
   <div id="app">
     <socket-io-logic></socket-io-logic>
-    <app-sidenav></app-sidenav>
-    <router-view class="wrap"></router-view>
+    <v-touch id="main-touch-area" tag="div" v-on:openSidebar="onSwipeRight" v-on:clostSidebar="onSwipeLeft">
+      <app-sidenav ref="sideNav"></app-sidenav>
+      <router-view class="wrap"></router-view>
+    </v-touch>
   </div>
 </template>
 
 <script>
+import sideNav from '@/components/Sidenav.vue'
 export default {
   name: 'app',
   created () {
     this.$store.dispatch('addBall')
   },
-  data () {
-    return {
-
+  methods: {
+    onSwipeRight () {
+      console.log('swipe right', sideNav)
+      this.$refs.sideNav.openLeftSidenav()
+    },
+    onSwipeLeft () {
+      this.$refs.sideNav.closeLeftSidenav()
     }
   }
 }
@@ -24,6 +31,11 @@ export default {
 html, body {
   margin: 0;
   padding: 0;
+}
+
+.main-touch-area {
+  height: 100%;
+  width: 100%;
 }
 
 #app {

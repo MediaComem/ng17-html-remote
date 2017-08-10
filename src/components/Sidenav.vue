@@ -57,6 +57,12 @@ export default {
     toggleLeftSidenav () {
       this.$refs.leftSidenav.toggle()
     },
+    openLeftSidenav () {
+      this.$refs.leftSidenav.open()
+    },
+    closeLeftSidenav () {
+      this.$refs.leftSidenav.close()
+    },
     isInHTMLGame () {
       var paths = ['/play', '/stats', '/color-selection']
       return paths.includes(this.$route.path) && this.$store.state.gameType !== 'ar'
@@ -74,6 +80,7 @@ export default {
       this.$refs.leftSidenav.close()
     },
     toColorSelection () {
+      this.close()
       this.$socket.emit('get colors')
     }
   }
