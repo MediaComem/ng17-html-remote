@@ -81,7 +81,6 @@ export const store = new Vuex.Store({
       }
     },
     setBallSettings (state, data) {
-      console.log(data)
       if (data.ballRate != null) {
         state.game.ballTimeReset = data.ballRate * 1000
       }
@@ -131,6 +130,7 @@ export const store = new Vuex.Store({
     socket_setup (context, data) {
       context.commit('redirect', data.redirect)
       context.commit('setGameType', data.gameType)
+      context.commit('setBallSettings', data.ballSettings)
     },
     socket_connect (context) {
       context.commit('connect')
@@ -166,7 +166,6 @@ export const store = new Vuex.Store({
     },
     addBall (context) {
       setTimeout(function () {
-        console.log(context.state.game.currentBallCount, context.state.game.maxBall)
         if (context.state.game.currentBallCount < context.state.game.maxBall) {
           context.commit('addBall')
         }
