@@ -155,10 +155,12 @@ export default {
           inst.ballPositionPX.top = previousY + 'px'
           i++
           if (previousX < boundX1 || previousX > boundX2 || previousY < boundY1 || previousY > boundY2 || i >= numberOfFrames) {
-            inst.ballPositionPX.left = ball.position.left + 'px'
-            inst.ballPositionPX.top = ball.position.top + 'px'
             inst.draw(ball.position.left, ball.position.top)
             clearInterval(interval)
+            setTimeout(function () {
+              inst.ballPositionPX.left = ball.position.left + 'px'
+              inst.ballPositionPX.top = ball.position.top + 'px'
+            }, 200)
           } else {
             inst.draw(previousX, previousY)
           }
