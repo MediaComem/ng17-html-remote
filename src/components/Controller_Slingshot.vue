@@ -53,15 +53,8 @@ export default {
   },
   created () {
     var component = this
-    window.addEventListener('deviceorientation', function (event) {
-      if (event.beta) {
-        component.noGyro = false
-        tilt = event.beta
-      } else {
-        component.noGyro = true
-        tilt = component.angle
-      }
-    })
+    component.noGyro = true
+    tilt = component.angle
   },
   mounted () {
     var canvas = this.$refs.canvas
