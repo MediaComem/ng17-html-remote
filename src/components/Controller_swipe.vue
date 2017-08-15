@@ -23,6 +23,8 @@ var shooting = false
 var left = (window.innerWidth - ballsize) / 2
 var bottom = 20
 var tilt = 0
+var timeArray
+var positionArray
 
 export default {
   name: 'controller-swipe',
@@ -64,6 +66,8 @@ export default {
   methods: {
     panStart (e) {
       if (e.target.id === 'projectile' && this.$store.state.game.currentBallCount > 0) {
+        timeArray = []
+        positionArray = []
         shooting = true
         this.ballSize.left = left + e.deltaX + 'px'
         this.ballSize.bottom = bottom - e.deltaY + 'px'
@@ -73,6 +77,12 @@ export default {
       if (shooting === true) {
         this.ballSize.left = left + e.deltaX + 'px'
         this.ballSize.bottom = bottom - e.deltaY + 'px'
+        if (timeArray.length >= 5) {
+          timeArray.splice(0, 1)
+          positionArray.splice(0, 1)
+        }
+        timeArray.push(Math.floor(Date.now()) / 10)
+        positionArray.push({x: e.deltaX, y: e.deltaY})
       }
     },
     panEnd (e) {
@@ -82,16 +92,23 @@ export default {
         }
         shooting = false
         this.$store.commit('addToBallCount')
-        const mag = this.$refs.vector.getMagnitude(e.velocityX, e.velocityY)
+        const timeDiff = Math.abs(Math.floor((Date.now() / 10) - timeArray[0])) / timeArray.length
+        const positionDiff = {
+          x: (e.deltaX - positionArray[0].x) / positionArray.length,
+          y: (e.deltaY - positionArray[0].y) / positionArray.length
+        }
+        const mag = this.$refs.vector.getMagnitude(positionDiff.x, positionDiff.y)
+        const velocity = Math.min(Math.max((mag * 200) / timeDiff, 4000), 10000)
+        console.log('velocity', timeDiff, mag, (mag * 200) / timeDiff, velocity)
         var data = {
           'shotType': 'swipe',
           'color': this.$store.getters.getColorForUnity,
           'direction': {
-            'x': -e.velocityX / mag,
-            'y': -(tilt / 90) * (e.velocityY / mag),
-            'z': -(1 + (tilt / 90) * (e.velocityY / mag))
+            'x': -positionDiff.x / mag / 2,
+            'y': -(tilt / 90) * (positionDiff.y / mag),
+            'z': -(1 + (tilt / 90) * (positionDiff.y / mag))
           },
-          'velocity': Math.abs(mag) * 1500
+          'velocity': velocity
         }
         this.$socket.emit('msg', data)
         const inst = this
