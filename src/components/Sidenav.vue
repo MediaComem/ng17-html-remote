@@ -98,10 +98,16 @@ export default {
     },
     toTutorial () {
       this.close()
+      if (this.$route.path !== '/play') {
+        this.$router.push('/play')
+      }
       this.$store.state.game.tutorialMode = true
     },
     toPlay () {
       this.close()
+      if (this.$route.path !== '/play') {
+        this.$router.push('/play')
+      }
       this.$store.state.game.tutorialMode = false
     }
   }

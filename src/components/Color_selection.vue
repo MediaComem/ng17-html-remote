@@ -19,7 +19,6 @@
         this.$store.commit('setPseudo', this.pseudo)
       },
       changeColor (color) {
-        console.log('this is the color', color)
         this.$socket.emit('set new color', {'newColor': color, 'oldColor': this.$store.state.color})
         this.$store.commit('setColor', color)
         this.$router.push('/play')

@@ -72,8 +72,8 @@ export const store = new Vuex.Store({
       state.pseudo = pseudo
     },
     newOrderedColors (state, colors) {
-      router.push({'path': '/color-selection'})
       state.colors = colors
+      router.push({'path': '/color-selection'})
     },
     redirect (state, redirect) {
       state.redirect = redirect
