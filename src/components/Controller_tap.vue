@@ -1,19 +1,26 @@
 <template>
-  <div class="controller-swipe">
+  <div class="controller">
     <tutorial v-if="isTutorial()"></tutorial>
-    <swipe v-if="!isTutorial()"></swipe>
+    <tap v-if="!isTutorial()"></tap>
   </div>
 </template>
 
 <script>
-import Swipe from '@/components/Swipe.vue'
-import Tutorial from '@/components/Tutorial_swipe.vue'
+import Tutorial from '@/components/Tutorial_tap.vue'
+import Tap from '@/components/Tap.vue'
 
 export default {
-  name: 'controller-swipe',
+  name: 'controller',
   components: {
-    'swipe': Swipe,
+    'tap': Tap,
     'tutorial': Tutorial
+  },
+  data () {
+    return {
+      posX: 20,
+      posY: 40,
+      size: 80
+    }
   },
   methods: {
     isTutorial () {
@@ -21,39 +28,24 @@ export default {
     }
   }
 }
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.controller {
-  position: relative;
-}
 .swip-area {
   position: relative;
   width: 100%;
   height: 100%;
 }
-.link {
+.controller {
   position: relative;
-  height: 20px;
-  width: 100px;
-  z-index: 2;
 }
-.ballcount {
-  width: 100px;
-}
-.ball {
-  position: absolute;
+.touchArea {
+  z-index: 1;
 }
 .right {
-  float: right;
-  margin: 5px;
-}
-.angle-lever {
   position: absolute;
-  z-index: 100;
-  right: 0px;
-  bottom: 0px;
+  top: 5px;
+  right: 5px;
 }
 </style>

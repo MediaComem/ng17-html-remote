@@ -10,9 +10,9 @@
 </template>
 
 <script>
-  import Controller from '@/components/Controller.vue'
+  import Controller from '@/components/Controller_tap.vue'
   import ControllerSwipe from '@/components/Controller_swipe.vue'
-  import ControllerSlingshot from '@/components/Controller_Slingshot.vue'
+  import ControllerSlingshot from '@/components/Controller_slingshot.vue'
   import Ar from '@/components/Ar.vue'
   import Queue from '@/components/Queue.vue'
   export default {

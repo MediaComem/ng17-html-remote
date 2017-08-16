@@ -18,18 +18,22 @@
               <md-icon>info</md-icon><span><router-link @click.native="close()" to="/welcome">Information</router-link></span>
             </md-list-item>
             <md-list-item v-if="!isInHTMLGame()">
-              <md-icon>gamepad</md-icon><span><router-link @click.native="close()" to="/play">Game</router-link></span>
+              <md-icon>gamepad</md-icon><span><router-link @click.native="close()" to="/play">Jeux</router-link></span>
             </md-list-item>
-            <md-list-item v-if="isInHTMLGame()">
+            <md-list-item v-if="isInHTMLGame()" ref="listItem">
               <md-icon>gamepad</md-icon>
               <span>
-                Game
+                Jeux
               </span>
               <md-list-expand>
                 <md-list>
                   <md-list-item class="md-inset">
+                    <md-icon>help</md-icon>
+                    <span><a @click="toTutorial()" to="/stats">Comment jouer</a></span>
+                  </md-list-item>
+                  <md-list-item class="md-inset">
                     <md-icon>videogame_asset</md-icon>
-                    <span><router-link @click.native="close()" to="/play">Play</router-link></span>
+                    <span><a @click="toPlay()">Play</a></span>
                   </md-list-item>
                   <md-list-item class="md-inset">
                     <md-icon>color_lens</md-icon>
@@ -53,6 +57,10 @@
 </template>
 <script>
 export default {
+  mounted () {
+    // console.log(this.$refs.listItem.$children[2].$el.click())
+    // this.$refs.listItem.$children
+  },
   methods: {
     toggleLeftSidenav () {
       this.$refs.leftSidenav.toggle()
@@ -65,7 +73,12 @@ export default {
     },
     isInHTMLGame () {
       var paths = ['/play', '/stats', '/color-selection']
-      return paths.includes(this.$route.path) && this.$store.state.gameType !== 'ar'
+      var gameTypes = ['ar', 'none']
+      if (paths.includes(this.$route.path) && !gameTypes.includes(this.$store.state.gameType)) {
+        return true
+      } else {
+        return false
+      }
     },
     close () {
       this.$refs.leftSidenav.close()
@@ -82,6 +95,14 @@ export default {
     toColorSelection () {
       this.close()
       this.$socket.emit('get colors')
+    },
+    toTutorial () {
+      this.close()
+      this.$store.state.game.tutorialMode = true
+    },
+    toPlay () {
+      this.close()
+      this.$store.state.game.tutorialMode = false
     }
   }
 }

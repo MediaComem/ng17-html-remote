@@ -1,28 +1,24 @@
 <template>
-  <div class="controller-slingshot">
-    <tutorial v-if="isTutorial()"></tutorial>
-    <div v-if="!isTutorial()">
-      <slingshot></slingshot>
+  <div class="tutorial-slingshot">
+    <div>
+      <p>slingshot</p>
     </div>
+    <md-button class="md-raised md-accent" @click="onClick()">Jouer</md-button>
   </div>
 </template>
 
 <script>
-import Tutorial from '@/components/Tutorial_slingshot.vue'
-import Slingshot from '@/components/Slingshot.vue'
 
 export default {
-  name: 'controller-slingshot',
-  components: {
-    'tutorial': Tutorial,
-    'slingshot': Slingshot
-  },
+  name: 'tutorial-slingshot',
   methods: {
-    isTutorial () {
-      return this.$store.state.game.tutorialMode
+    onClick () {
+      this.$store.state.game.tutorialMode = false
+      this.$router.push({'path': '/play'})
     }
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -35,11 +31,6 @@ export default {
   width: 100%;
   height: 100%;
 }
-#canvas {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
 .link {
   position: relative;
   height: 20px;
@@ -49,7 +40,7 @@ export default {
 .ballcount {
   width: 100px;
 }
-.ball, .pin {
+.ball {
   position: absolute;
 }
 .right {

@@ -25,7 +25,8 @@ export const store = new Vuex.Store({
     game: {
       maxBall: 30,
       ballTimeReset: 2000,
-      currentBallCount: 0
+      currentBallCount: 0,
+      tutorialMode: true
     },
     redirect: '/home'
   },
@@ -64,6 +65,7 @@ export const store = new Vuex.Store({
       state.color = color
     },
     setGameType (state, gameType) {
+      state.game.tutorialMode = true
       state.gameType = gameType
     },
     setPseudo (state, pseudo) {
