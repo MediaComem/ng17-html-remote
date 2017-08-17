@@ -8,6 +8,7 @@ export const store = new Vuex.Store({
   state: {
     connect: false,
     playing: false,
+    timedout: false,
     gameType: 'none',
     gameRunning: 'none',
     message: null,
@@ -34,6 +35,7 @@ export const store = new Vuex.Store({
     connect (state) {
       state.connect = true
       state.playing = false
+      state.timedout = false
       if (typeof (Storage) !== 'undefined') {
         var stats = window.localStorage.getItem('stats')
         stats = JSON.parse(stats)
@@ -51,10 +53,15 @@ export const store = new Vuex.Store({
         window.localStorage.setItem('stats', JSON.stringify(state.stats))
       }
     },
+    disconect (state) {
+      state.timedout = true
+      state.playing = false
+    },
     launchGame (state, data) {
       if (!state.playing) {
         state.color = data.color
       }
+      state.timedout = false
       state.playing = true
     },
     waitInQueue (state, data) {
@@ -165,6 +172,9 @@ export const store = new Vuex.Store({
     },
     socket_setBallSettings (context, data) {
       context.commit('setBallSettings', data)
+    },
+    socket_timeout (context) {
+      context.commit('disconect')
     },
     addBall (context) {
       setTimeout(function () {

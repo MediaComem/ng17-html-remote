@@ -47,7 +47,12 @@
               </md-list-expand>
             </md-list-item>
             <md-list-item>
-              <md-icon>view_list</md-icon><span><router-link @click.native="close()" to="/schedule">Programme</router-link></span>
+              <md-icon>view_list</md-icon>
+              <span><router-link @click.native="close()" to="/schedule">Programme</router-link></span>
+            </md-list-item>
+            <md-list-item>
+              <md-icon>camera</md-icon>
+              <span><router-link @click.native="close()" to="/contribution">Vidéo mapping</router-link></span>
             </md-list-item>
           </md-list>
         </md-toolbar>

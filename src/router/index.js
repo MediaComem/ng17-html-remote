@@ -6,6 +6,7 @@ import Stats from '@/components/Stats'
 import Schedule from '@/components/Schedule'
 import Welcome from '@/components/Welcome'
 import Queue from '@/components/Queue'
+import Contributors from '@/components/Contributors'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ const router = new Router({
       path: '/queue/:type',
       name: 'Queue',
       component: Queue
+    },
+    {
+      path: '/contribution',
+      name: 'Contributeur',
+      component: Contributors
     }
   ]
 })

@@ -2,6 +2,7 @@
   <div class="play-home" v-if="!isAGameRunning()">
     il n'y a pas de jeux en ce moment
   </div>
+  <timeout v-else-if="$store.state.timedout"></timeout>
   <queue v-else-if="!isPlaying()"></queue>
   <controller v-else-if="isTapController()"></controller>
   <controller-swipe v-else-if="isSwipeController()"></controller-swipe>
@@ -15,6 +16,7 @@
   import ControllerSlingshot from '@/components/Controller_slingshot.vue'
   import Ar from '@/components/Ar.vue'
   import Queue from '@/components/Queue.vue'
+  import Timeout from '@/components/Timedout.vue'
   export default {
     name: 'play-home',
     components: {
@@ -22,7 +24,8 @@
       'controller-swipe': ControllerSwipe,
       'controller-slingshot': ControllerSlingshot,
       'ar': Ar,
-      'queue': Queue
+      'queue': Queue,
+      'timeout': Timeout
     },
     created () {
       this.$socket.emit('play')
