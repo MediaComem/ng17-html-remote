@@ -1,0 +1,27 @@
+image: node:8.4.0-wheezy
+
+before_script:
+    - apt-get update
+    - npm install
+    - npm run build
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 --decode)
+    # For Docker builds disable host key checking. Be aware that by adding that
+    # you are suspectible to man-in-the-middle attacks.
+    # WARNING: Use this only with the Docker executor, if you use it with shell
+    # you will overwrite your user's SSH config.
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+stage_deploy:
+  artifacts:
+    paths:
+      - dist/
+  only:
+    - deploy
+  script:
+    - ssh -p22 root@ns3056388.ip-193-70-6.eu "mkdir /var/www/html/_tmp_remote"
+    - scp -P22 -r dist/* root@ns3056388.ip-193-70-6.eu:/var/www/html/_tmp_remote
+    - ssh -p22 root@ns3056388.ip-193-70-6.eu "mv /var/www/html/remote /var/www/html/remote_old && mv /var/www/html/_tmp_remote /var/www/html/remote"
+    - ssh -p22 root@ns3056388.ip-193-70-6.eu "rm -rf /var/www/html/remote_old"
