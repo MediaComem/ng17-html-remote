@@ -1,7 +1,6 @@
 image: node:8.4.0-wheezy
 
 before_script:
-    - apt-get update
     - npm install
     - npm run build
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
