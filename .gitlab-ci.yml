@@ -21,7 +21,7 @@ stage_deploy:
   only:
     - deploy
   script:
-    - ssh -p22 root@ns3056388.ip-193-70-6.eu "mkdir /var/www/html/_tmp_remote"
-    - scp -P22 -r dist/* root@ns3056388.ip-193-70-6.eu:/var/www/html/_tmp_remote
-    - ssh -p22 root@ns3056388.ip-193-70-6.eu "mv /var/www/html/remote /var/www/html/remote_old && mv /var/www/html/_tmp_remote /var/www/html/remote"
-    - ssh -p22 root@ns3056388.ip-193-70-6.eu "rm -rf /var/www/html/remote_old"
+    - ssh -p22 root@ns3056388.ip-193-70-6.eu "mkdir /var/www/remote.heig-vd.ch/_tmp_remote"
+    - scp -P22 -r dist/* root@ns3056388.ip-193-70-6.eu:/var/www/remote.heig-vd.ch/_tmp_remote
+    - ssh -p22 root@ns3056388.ip-193-70-6.eu "mv /var/www/remote.heig-vd.ch/html /var/www/remote.heig-vd.ch/remote_old && mv /var/www/remote.heig-vd.ch/_tmp_remote /var/www/remote.heig-vd.ch/html"
+    - ssh -p22 root@ns3056388.ip-193-70-6.eu "rm -rf /var/www/remote.heig-vd.ch/remote_old"
