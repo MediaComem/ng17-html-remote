@@ -15,7 +15,7 @@
           </div>
           <md-list>
             <md-list-item>
-              <md-icon>info</md-icon><span><router-link @click.native="close()" to="/welcome">Information</router-link></span>
+              <md-icon>info</md-icon><span><router-link @click.native="close()" to="/home">Information</router-link></span>
             </md-list-item>
             <md-list-item v-if="!isInHTMLGame()">
               <md-icon>gamepad</md-icon><span><router-link @click.native="close()" to="/play">Jeux</router-link></span>
@@ -87,7 +87,8 @@ export default {
     },
     close () {
       this.$refs.leftSidenav.close()
-      var paths = ['/welcome', '/programme']
+      var paths = ['/home', '/programme', '/mapping']
+      console.log(this.$route.path, this.$store.state.playing)
       if (paths.includes(this.$route.path) && this.$store.state.playing) {
         this.$socket.emit('leave game')
         this.$store.state.playing = false
@@ -103,10 +104,10 @@ export default {
     },
     toTutorial () {
       this.close()
+      this.$store.state.game.tutorialMode = true
       if (this.$route.path !== '/play') {
         this.$router.push('/play')
       }
-      this.$store.state.game.tutorialMode = true
     },
     toPlay () {
       this.close()

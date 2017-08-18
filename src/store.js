@@ -8,6 +8,7 @@ export const store = new Vuex.Store({
   state: {
     connect: false,
     playing: false,
+    queuing: false,
     timedout: false,
     gameType: 'none',
     gameRunning: 'none',
@@ -61,12 +62,18 @@ export const store = new Vuex.Store({
       if (!state.playing) {
         state.color = data.color
       }
+      state.queuing = false
       state.timedout = false
-      state.playing = true
+      if (state.gameType === 'ar') {
+        state.playing = false
+      } else {
+        state.playing = true
+      }
     },
     waitInQueue (state, data) {
       state.queue.position = data.position
       state.queue.total = data.total
+      state.queuing = true
     },
     setColor (state, color) {
       state.color = color

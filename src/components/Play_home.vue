@@ -3,7 +3,7 @@
     il n'y a pas de jeux en ce moment
   </div>
   <timeout v-else-if="$store.state.timedout"></timeout>
-  <queue v-else-if="!isPlaying()"></queue>
+  <queue v-else-if="isQueuing()"></queue>
   <controller v-else-if="isTapController()"></controller>
   <controller-swipe v-else-if="isSwipeController()"></controller-swipe>
   <controller-slingshot v-else-if="isSlingshotController()"></controller-slingshot>
@@ -28,14 +28,22 @@
       'timeout': Timeout
     },
     created () {
-      this.$socket.emit('play')
+      if (this.$store.state.gameType !== 'ar') {
+        this.$socket.emit('play')
+      }
     },
     computed: {
       gameType () {
+        if (this.$store.state.gameType === 'ar') {
+          this.$socket.emit('leave game')
+        }
         return this.$store.state.gameType
       },
       playing () {
         return this.$store.state.playing
+      },
+      queuing () {
+        return this.$store.state.queuing
       }
     },
     methods: {
@@ -44,6 +52,9 @@
       },
       isPlaying () {
         return this.playing
+      },
+      isQueuing () {
+        return this.queuing
       },
       isTapController () {
         return this.gameType === 'destruction'

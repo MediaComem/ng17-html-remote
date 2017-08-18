@@ -33,6 +33,15 @@ html, body {
   padding: 0;
 }
 
+#app .md-toolbar.md-theme-default {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#312ee8+22,ce10cb+69 */
+  background: #312ee8; /* Old browsers */
+  background: -moz-linear-gradient(45deg, #312ee8 22%, #ce10cb 69%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #312ee8 22%,#ce10cb 69%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #312ee8 22%,#ce10cb 69%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#312ee8', endColorstr='#ce10cb',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
 .main-touch-area {
   height: 100%;
   width: 100%;

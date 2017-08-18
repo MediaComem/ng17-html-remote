@@ -19,8 +19,8 @@ const router = new Router({
       component: ColorSelection
     },
     {
-      path: '/welcome',
-      name: 'Welcome',
+      path: '/home',
+      name: 'Home',
       component: Welcome
     },
     {
@@ -44,7 +44,7 @@ const router = new Router({
       component: Queue
     },
     {
-      path: '/contribution',
+      path: '/mapping',
       name: 'Contributeur',
       component: Contributors
     }
