@@ -52,7 +52,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: white;
   margin: 0px;
   padding: 0px;
 }
@@ -62,6 +62,11 @@ html, body {
   text-align: left;
 }
 
-
+body {
+  background-color: #161616;
+}
+body a:active, body a:visited, body a:link  {
+  color: white;
+}
 </style>
 <style src="vue-material/dist/vue-material.css"></style>

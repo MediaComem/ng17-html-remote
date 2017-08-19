@@ -1,34 +1,37 @@
 <template>
-  <div class="schedule">
-    <ul v-for="contrib in contributions">
-      <li>
-        <img :src="getImgUrl(contrib.img)" />
-        <h3>{{ contrib.name }}</h3>
-        <h5>{{ contrib.organisation }}</h5>
-        <div v-if="contrib.links!=null" v-for="link in contrib.links">
-          <a :href="link.url"><icon :name="link.icon" scale="2"></icon></a>
-        </div>
+  <div class="contrib">
+    <ul>
+      <li v-for="contrib in contributions">
+        <md-card md-with-hover>
+          <md-card-media>
+            <img :src="getImgUrl(contrib.img)" :alt="contrib.name"/>
+          </md-card-media>
+          <md-card-content class="content">
+            <h3>{{ contrib.name }}</h3>
+            <h5>{{ contrib.organisation }}</h5>
+          </md-card-content>
+          <md-card-actions>
+            <md-button class="md-icon-button"  v-if="contrib.links!=null" v-for="link in contrib.links">
+              <a :href="link.url"><md-icon :md-iconset="link.icon" class="md-size-1x md-primary"></md-icon></a>
+            </md-button>
+          </md-card-actions>
+        </md-card>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import Icon from 'vue-awesome'
-
-const TWITTER = 'twitter'
-const INSTAGRAM = 'instagram'
-const FACEBOOK = 'facebook'
-const LINK = 'link'
-const VIMEO = 'vimeo'
-const YOUTUBE = 'youtube'
-const BEHANCE = 'behance'
+const TWITTER = 'fa fa-twitter'
+const INSTAGRAM = 'fa fa-instagram'
+const FACEBOOK = 'fa fa-facebook'
+const LINK = 'fa fa-link'
+const VIMEO = 'fa fa-vimeo'
+const YOUTUBE = 'fa fa-youtube'
+const BEHANCE = 'fa fa-behance'
 
 export default {
-  name: 'schedule',
-  components: {
-    'icon': Icon
-  },
+  name: 'contrib',
   methods: {
     getImgUrl (url) {
       return require('../assets/' + url + '.jpg')
@@ -166,8 +169,29 @@ export default {
 }
 </script>
 <style>
-.schedule {
-  margin: 5px;
+.contrib {
+  margin: 10px;
+}
+.contrib ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contrib li {
+  list-style: none;
+  margin-bottom: 25px;
+}
+
+.content h3, .content h5 {
+  color: #161616;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.contrib .content {
+  padding: 14px 14px 5px 14px;
+}
+.contrib .md-card-actions {
+  padding-top: 0px;
 }
 </style>
-<style src="vue-material/dist/vue-material.css"></style>

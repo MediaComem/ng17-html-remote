@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Home from '@/components/Home'
 import ColorSelection from '@/components/Color_selection'
 import PlayHome from '@/components/Play_home'
 import Stats from '@/components/Stats'
 import Schedule from '@/components/Schedule'
-import Welcome from '@/components/Welcome'
+import Information from '@/components/Information'
 import Queue from '@/components/Queue'
 import Contributors from '@/components/Contributors'
 
@@ -21,11 +22,16 @@ const router = new Router({
     {
       path: '/home',
       name: 'Home',
-      component: Welcome
+      component: Home
+    },
+    {
+      path: '/information',
+      name: 'Information',
+      component: Information
     },
     {
       path: '/play',
-      name: 'play',
+      name: 'Jeux',
       component: PlayHome
     },
     {
@@ -34,7 +40,7 @@ const router = new Router({
       component: Stats
     },
     {
-      path: '/schedule',
+      path: '/programme',
       name: 'Programme',
       component: Schedule
     },

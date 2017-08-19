@@ -1,5 +1,5 @@
 <template>
-  <div class="welcome">
+  <div class="information">
     <h1>Amplified Reality</h1>
     <p>Amplified Reality est une famille de jeux conçu pour la façade du Temple Pestalozzi.</p>
     <p>Téléchargez l'application <a href="#">iOS</a> où <a href="#">Android</a> pour jouer.</p>
@@ -13,7 +13,7 @@
 <script>
 
 export default {
-  name: 'welcome',
+  name: 'information',
   created () {
     var _os = getMobileOperatingSystem()
 
@@ -38,7 +38,6 @@ export default {
       'appstoreLink': 'https://www.apple.com',
       'googleplayLink': 'https://www.google.com',
       'dllink': 'www.heig-vd.ch'
-
     }
   }
 }

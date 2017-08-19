@@ -13,8 +13,8 @@ import Sidenav from '@/components/Sidenav'
 import SocketIO from '@/components/SocketIO'
 
 // const socketInstance = io('http://ng2.comem.ch')
-const socketInstance = io('http://10.192.115.44:3011')
-// const socketInstance = io('http://localhost:3011')
+// const socketInstance = io('http://10.192.115.44:3011')
+const socketInstance = io('http://localhost:3011')
 
 Vue.use(VueSocketio, socketInstance, store)
 Vue.use(VueMaterial)
@@ -28,6 +28,20 @@ VueTouch.registerCustomEvent('clostSidebar', {
 })
 
 Vue.use(VueTouch, {name: 'v-touch'})
+Vue.material.registerPalette('ng17-black', {
+  500: '#161616',
+  900: '#ffffff',
+  A100: '#161616',
+  A900: '#ffffff',
+  darkText: [ 500, 900, 'A100', 'A900' ]
+})
+Vue.material.registerPalette('ng17-white', {
+  500: '#ffffff',
+  900: '#161616',
+  A100: '#ffffff',
+  A900: '#161616',
+  darkText: [ 500, 900, 'A100', 'A900' ]
+})
 Vue.material.registerPalette('ng17-pink', {
   500: '#D63C96',
   900: '#D63C96',
@@ -45,7 +59,7 @@ Vue.material.registerPalette('ng17-blue', {
 Vue.material.registerTheme(
   'default', {
     primary: {
-      color: 'ng17-blue',
+      color: 'ng17-black',
       hue: 900,
       textColor: 'white'
     },
@@ -57,9 +71,9 @@ Vue.material.registerTheme(
     warn: 'red',
     background: 'white'
   },
-  'pink', {
+  'inverse', {
     primary: {
-      color: 'ng17-pink',
+      color: 'ng17-white',
       hue: 500
     },
     accent: {
