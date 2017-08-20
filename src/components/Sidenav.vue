@@ -4,7 +4,11 @@
       <md-button class="md-icon-button" @click.native="toggleLeftSidenav">
         <md-icon>menu</md-icon>
       </md-button>
-      <h2 class="md-title">Eclair | Age</h2>
+      <h2 v-if="isHeaderText()" class="md-title logo">{{ header }}</h2>
+      <img v-else class="logo" src="../assets/logo-EA.svg" />
+      <md-button class="md-icon-button" @click.native="goHome">
+        <md-icon>home</md-icon>
+      </md-button>
     </md-toolbar>
     <md-sidenav class="md-left" ref="leftSidenav">
       <md-theme md-name="pink">
@@ -15,7 +19,15 @@
           </div>
           <md-list>
             <md-list-item>
+              <md-icon>home</md-icon><span><router-link @click.native="close()" to="/home">Accueil</router-link></span>
+            </md-list-item>
+            <md-divider class="md-inset"></md-divider>
+            <md-list-item>
               <md-icon>info</md-icon><span><router-link @click.native="close()" to="/home">Information</router-link></span>
+            </md-list-item>
+            <md-list-item>
+              <md-icon>view_list</md-icon>
+              <span><router-link @click.native="close()" to="/programme">Programme</router-link></span>
             </md-list-item>
             <md-list-item v-if="!isInHTMLGame()">
               <md-icon>gamepad</md-icon><span><router-link @click.native="close()" to="/play">Jeux</router-link></span>
@@ -47,12 +59,15 @@
               </md-list-expand>
             </md-list-item>
             <md-list-item>
-              <md-icon>view_list</md-icon>
-              <span><router-link @click.native="close()" to="/programme">Programme</router-link></span>
-            </md-list-item>
-            <md-list-item>
               <md-icon>camera</md-icon>
               <span><router-link @click.native="close()" to="/mapping">Vidéo mapping</router-link></span>
+            </md-list-item>
+            <md-divider class="md-inset"></md-divider>
+            <md-list-item>
+              <md-icon>home</md-icon><span><a href="fsd">Facebook</a></span>
+            </md-list-item>
+            <md-list-item>
+              <md-icon>home</md-icon><span><a href="fsd">Instagram</a></span>
             </md-list-item>
           </md-list>
         </md-toolbar>
@@ -66,7 +81,23 @@ export default {
     // console.log(this.$refs.listItem.$children[2].$el.click())
     // this.$refs.listItem.$children
   },
+  props: [
+    'headerTitle'
+  ],
+  computed: {
+    header () {
+      console.log(this.$route.name)
+      return this.$route.name
+    }
+  },
   methods: {
+    isHeaderText () {
+      if (this.$route.name === 'Home') {
+        return false
+      } else {
+        return true
+      }
+    },
     toggleLeftSidenav () {
       this.$refs.leftSidenav.toggle()
     },
@@ -88,14 +119,13 @@ export default {
     close () {
       this.$refs.leftSidenav.close()
       var paths = ['/home', '/programme', '/mapping']
-      console.log(this.$route.path, this.$store.state.playing)
       if (paths.includes(this.$route.path) && this.$store.state.playing) {
         this.$socket.emit('leave game')
         this.$store.state.playing = false
       }
     },
     goHome () {
-      this.$router.push('/welcome')
+      this.$router.push('/home')
       this.$refs.leftSidenav.close()
     },
     toColorSelection () {
@@ -129,5 +159,9 @@ export default {
   }
   .md-toolbar .md-toolbar-container {
     width: 106%;
+  }
+  .logo {
+    width: 50%;
+    margin: auto;
   }
 </style>

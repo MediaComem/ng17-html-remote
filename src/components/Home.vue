@@ -18,7 +18,7 @@
         <p>Jeux</p>
       </div>
     </router-link>
-    <router-link class="item" :to="{ path: '/play' }">
+    <router-link class="item" :to="{ path: '/mapping' }">
       <div>
         <md-icon class="md-size-4x md-primary">movie</md-icon>
         <p>Vidéo mapping</p>
@@ -69,5 +69,13 @@ export default {
 .item p {
   width: 100%;
   text-align: center;
+}
+
+.home .fa-facebook-official, .home .fa-instagram {
+  min-width: 82px;
+  width: 82px;
+}
+.home .fa-facebook-official::before, .home .fa-instagram::before {
+  color: grey;
 }
 </style>
