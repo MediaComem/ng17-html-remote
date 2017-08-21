@@ -60,12 +60,12 @@ const router = new Router({
     },
     {
       path: '/mapping_info',
-      name: 'Information - mapping',
+      name: 'Info mapping',
       component: MappingInfo
     },
     {
       path: '/jeux_info',
-      name: 'Information - jeux',
+      name: 'Info jeux',
       component: JeuxInfo
     },
     {

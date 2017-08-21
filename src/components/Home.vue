@@ -33,7 +33,7 @@
     <a class="item" href="https://www.instagram.com/ng17mapping/">
       <div>
         <md-icon md-iconset="fa fa-instagram" class="md-size-4x md-primary"></md-icon>
-        <p>Intagram</p>
+        <p>Instagram</p>
       </div>
     </a>
   </div>

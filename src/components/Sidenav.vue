@@ -1,14 +1,14 @@
 <template>
   <div class="sidenav">
     <md-toolbar>
-      <div class="edge-button">
-        <md-button class="md-icon-button" @click.native="toggleLeftSidenav">
+      <div class="edge-button left">
+        <md-button class="md-icon-button " @click.native="toggleLeftSidenav">
           <md-icon>menu</md-icon>
         </md-button>
       </div>
       <h2 v-if="isHeaderText()" class="md-title logo">{{ header }}</h2>
       <img v-else class="logo" src="../assets/logo-EA.svg" />
-      <div class="edge-button">
+      <div class="edge-button right">
         <md-button class="md-icon-button" @click.native="close">
           <md-icon>home</md-icon>
         </md-button>
@@ -88,10 +88,10 @@
           </md-list-item>
           <md-divider class="md-inset"></md-divider>
           <md-list-item>
-            <md-icon md-iconset="fa fa-facebook-official" class="md-size-1x md-primary"></md-icon><span><a href="fsd">Facebook</a></span>
+            <md-icon md-iconset="fa fa-facebook-official" class="md-size-1x md-primary"></md-icon><span><a href="https://www.facebook.com/ng17mapping/">Facebook</a></span>
           </md-list-item>
           <md-list-item>
-            <md-icon md-iconset="fa fa-instagram" class="md-size-1x md-primary"></md-icon><span><a href="fsd">Instagram</a></span>
+            <md-icon md-iconset="fa fa-instagram" class="md-size-1x md-primary"></md-icon><span><a href="https://www.instagram.com/ng17mapping/">Instagram</a></span>
           </md-list-item>
         </md-list>
       </md-toolbar>
@@ -208,15 +208,16 @@ export default {
   .md-toolbar .md-toolbar-container {
     width: 106%;
   }
-  #app .logo {
+  #app img.logo {
     height: 50px;
     margin: auto;
   }
-  .md-toolbar.md-theme-default button{
+  .md-toolbar.md-theme-default .edge-button{
     flex-grow: 1;
   }
-  .md-toolbar.md-theme-default .edge-button,
-  .md-toolbar.md-theme-default img {
-    flex-grow: 4;
+
+  .md-toolbar.md-theme-default img,
+  .md-toolbar.md-theme-default h2 {
+    flex-grow: 6;
   }
 </style>

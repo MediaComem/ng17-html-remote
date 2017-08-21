@@ -60,6 +60,11 @@ html, body {
   color: white;
   margin: 0px;
   padding: 0px;
+  font-weight: 300;
+}
+
+#app a:active, #app a:visited, #app a:link {
+  font-weight: 400;
 }
 
 .wrap {
@@ -73,16 +78,23 @@ body {
 body a:active, body a:visited, body a:link  {
   color: white;
 }
+#app .text a:active, #app .text a:visited, #app .text a:link {
+  color: #246172;
+  font-weight: 400;
+}
 
 #app .md-list-text-container h2 {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 3px;
+  margin-bottom: 0px;
+  padding-top: 2px;
   text-transform: uppercase;
+  font-size: 0.9em;
 }
 
 #app .md-list-text-container {
   padding-right: 5px;
   padding-left: 10px;
+  padding-top: 5px;
 }
 
 #app .md-theme-default.md-list {
@@ -91,7 +103,9 @@ body a:active, body a:visited, body a:link  {
 }
 
 #app .md-list-text-container > :nth-child(2){
+  padding-bottom: 5px;
   color: grey;
+  font-size: 0.8em;
 }
 
 #app .md-divider {

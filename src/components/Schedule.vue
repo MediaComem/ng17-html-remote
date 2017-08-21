@@ -54,7 +54,7 @@
     <gmap-map
     :center="center"
     :zoom="14"
-    style="width: 100%; height: 300px"
+    style="width: 100%; height: 300px; margin-top: 20px; margin-bottom: 20px"
     >
       <gmap-marker
         :key="index"
@@ -66,6 +66,7 @@
       ></gmap-marker>
   </gmap-map>
   <md-list class="md-double-line">
+    <md-divider class="md-inset light"></md-divider>
     <md-list-item>
       <div class="md-list-text-container">
         <h2>Numerik Games</h2>
