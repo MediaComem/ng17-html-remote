@@ -1,33 +1,13 @@
-image: node:8.4.0-wheezy
-
-before_script:
-    - npm install
-    - npm run build
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-    - eval $(ssh-agent -s)
-    - ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 --decode)
-    # For Docker builds disable host key checking. Be aware that by adding that
-    # you are suspectible to man-in-the-middle attacks.
-    # WARNING: Use this only with the Docker executor, if you use it with shell
-    # you will overwrite your user's SSH config.
-    - mkdir -p ~/.ssh
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-    # In order to properly check the server's host key, assuming you created the
-    # SSH_SERVER_HOSTKEYS variable previously, uncomment the following two lines
-    # instead.
-    - '[[ -f /.dockerenv ]] && echo "$SSH_SERVER_HOSTKEYS" > /root/.ssh/known_hosts'
-    - echo "$SSH_PRIVATE_KEY" > /root/.ssh/id_rsa
-    - chmod 600 /root/.ssh/id_rsa && chmod 700 /root/.ssh
-
-
 stage_deploy:
-  artifacts:
-    paths:
-      - dist/
   only:
     - deploy
   script:
-    - ssh -p22 root@ns3056388.ip-193-70-6.eu "mkdir /var/www/remote.heig-vd.ch/_tmp_remote"
-    - scp -P22 -r dist/* root@ns3056388.ip-193-70-6.eu:/var/www/remote.heig-vd.ch/_tmp_remote
-    - ssh -p22 root@ns3056388.ip-193-70-6.eu "mv /var/www/remote.heig-vd.ch/html /var/www/remote.heig-vd.ch/remote_old && mv /var/www/remote.heig-vd.ch/_tmp_remote /var/www/remote.heig-vd.ch/html"
-    - ssh -p22 root@ns3056388.ip-193-70-6.eu "rm -rf /var/www/remote.heig-vd.ch/remote_old"
+    - mkdir -p /var/www/tmp_ngremote
+    - cd  /var/www/tmp_ngremote
+    - git clone git@gitlab.com:sysin/NG17_HTMLremote.git .
+    - npm install
+    - rm -rf /var/www/remote.heig-vd.ch
+    - cp -r /var/www/tmp_ngremote /var/www/remote.heig-vd.ch
+    - rm -rf /var/www/tmp_ngremote
+    - cd /var/www/remote.heig-vd.ch
+    - npm run build
