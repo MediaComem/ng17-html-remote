@@ -7,7 +7,7 @@ stage_deploy:
     - git clone git@gitlab.com:sysin/NG17_HTMLremote.git .
     - npm install
     - rm -rf /var/www/ng17-remote.heig-vd.ch
-    - cp -r /var/www/tmp_ngremote/dist /var/www/ng17-remote.heig-vd.ch
+    - cp -r /var/www/tmp_ngremote /var/www/ng17-remote.heig-vd.ch
     - rm -rf /var/www/tmp_ngremote
     - cd /var/www/ng17-remote.heig-vd.ch
     - npm run build
