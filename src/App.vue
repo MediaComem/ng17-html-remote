@@ -38,13 +38,13 @@ html, body {
   padding: 0;
 }
 
-#app .md-toolbar.md-theme-default {
+#app .sidenav.nav {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#312ee8+22,ce10cb+69 */
   background: #D63C96; /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #D63C96 22%, #2995A8 69%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #D63C96 22%,#2995A8 69%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(-45deg, #D63C96 22%,#2995A8 69%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#D63C96', endColorstr='#2995A8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background: -moz-linear-gradient(135deg, #8f1d61 22%, #246172 69%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(135deg, #8f1d61 22%,#246172 69%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #8f1d61 22%,#246172 69%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8f1d61', endColorstr='#246172',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
 .main-touch-area {
@@ -73,5 +73,49 @@ body {
 body a:active, body a:visited, body a:link  {
   color: white;
 }
+
+#app .md-list-text-container h2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+#app .md-list-text-container {
+  padding-right: 5px;
+  padding-left: 10px;
+}
+
+#app .md-theme-default.md-list {
+  background-color: #161616;
+  color: white;
+}
+
+#app .md-list-text-container > :nth-child(2){
+  color: grey;
+}
+
+#app .md-divider {
+ background-color: rgba(0, 0, 0, 0.1);
+}
+#app .md-inset.light {
+  background-color: rgba(255,255,255,0.1);
+}
+
+#app .text {
+  margin: 0 15px;
+}
+
+#app .md-theme-default.md-avatar.md-warn.md-avatar-icon.blue {
+  background-color: #246172;
+}
+
+#app .md-theme-default.md-avatar.md-warn.md-avatar-icon.pink {
+  background-color: #8f1d61;
+}
+
+#app .white-icon {
+  color: white;
+}
+
 </style>
 <style src="vue-material/dist/vue-material.css"></style>

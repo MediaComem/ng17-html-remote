@@ -48,7 +48,7 @@ export default {
 </script>
 <style>
 .home {
-  padding: 0;
+  padding: 2vh 0 5vh 0;
   margin: 0 5px;
   display: -webkit-box;
   display: -moz-box;
@@ -63,7 +63,7 @@ export default {
   display: flex;
   flex: 1 50%;
   padding: 20px;
-  height: 30vh;
+  height: 27vh;
   justify-content: center;
 }
 .item p {

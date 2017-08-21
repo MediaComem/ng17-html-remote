@@ -11,7 +11,7 @@
             <h5>{{ contrib.organisation }}</h5>
           </md-card-content>
           <md-card-actions>
-            <md-button class="md-icon-button"  v-if="contrib.links!=null" v-for="link in contrib.links">
+            <md-button class="md-icon-button"  v-if="contrib.links!=null" v-for="link in contrib.links" :key="link.id">
               <a :href="link.url"><md-icon :md-iconset="link.icon" class="md-size-1x md-primary"></md-icon></a>
             </md-button>
           </md-card-actions>

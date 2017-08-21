@@ -11,9 +11,10 @@ import VueTouch from 'vue-touch'
 import { store } from './store'
 import Sidenav from '@/components/Sidenav'
 import SocketIO from '@/components/SocketIO'
+import * as VueGoogleMaps from 'vue2-google-maps'
 
 const socketInstance = io('http://ng2.comem.ch')
-// const socketInstance = io('http://10.192.115.44:3011')
+// const socketInstance = io('http://10.192.115.223:3011')
 // const socketInstance = io('http://localhost:3011')
 
 Vue.use(VueSocketio, socketInstance, store)
@@ -26,7 +27,11 @@ VueTouch.registerCustomEvent('clostSidebar', {
   type: 'swipe',
   direction: 'left'
 })
-
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyBE5yuVFf2BOTmLCSyfHjpIsGMZZOqzr0o'
+  }
+})
 Vue.use(VueTouch, {name: 'v-touch'})
 Vue.material.registerPalette('ng17-black', {
   500: '#161616',

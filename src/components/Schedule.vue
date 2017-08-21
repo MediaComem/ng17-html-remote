@@ -1,67 +1,90 @@
 <template>
   <div class="schedule">
-     <table>
-      <th colspan="2">
-        <td>{{ night1.tag }}</td>
-      </th>
-
-      <tr v-for="item in night1.schedule">
-        <td>{{ item.time }}</td>
-        <td>{{ item.tag }}</td>
-      </tr>
-      </table>
-
-    <!-- Second night -->
-     <table>
-      <th colspan="2">
-        <td>{{ night2.tag }}</td>
-      </th>
-
-      <tr v-for="item in night2.schedule">
-        <td>{{ item.time }}</td>
-        <td>{{ item.tag }}</td>
-      </tr>
-      </table>
-
+    <img class="headerImg" src='../assets/NG16-GOT_82.jpg'></img>
+    <md-list class="md-double-line">
+      <md-list-item>
+        <div class="md-list-text-container">
+          <span>25-26 août 2017</span>
+          <span>Temple, Place Pestalozzi, Yverdon-Les-Bains</span>
+        </div>
+        <md-divider class="md-inset"></md-divider>
+      </md-list-item>
+      <md-list-item>
+        <div class="time">21h00</div>
+        <div class="md-list-text-container">
+          <h2>Vidéo mapping</h2>
+          <p>Clair-Obscur: HEIG-VD et artistes</p>
+        </div>
+        <md-avatar class="md-avatar-icon md-medium md-warn pink">
+          <md-icon>movie</md-icon>
+        </md-avatar>
+      </md-list-item>
+      <md-list-item>
+        <div class="time">21:45</div>
+        <div class="md-list-text-container">
+          <h2>Jeux</h2>
+          <p>Amplified Reality</p>
+        </div>
+        <md-avatar class="md-avatar-icon md-medium md-warn blue">
+          <md-icon>gamepad</md-icon>
+        </md-avatar>
+      </md-list-item>
+      <md-list-item>
+        <div class="time">22:30</div>
+        <div class="md-list-text-container">
+          <h2>Vidéo mapping</h2>
+          <p>Clair-Obscur: HEIG-VD et artistes</p>
+        </div>
+        <md-avatar class="md-avatar-icon md-medium md-warn pink">
+          <md-icon>movie</md-icon>
+        </md-avatar>
+      </md-list-item>
+      <md-list-item>
+        <div class="time">23:15</div>
+        <div class="md-list-text-container">
+          <h2>Jeux</h2>
+          <p>Amplified Reality</p>
+        </div>
+        <md-avatar class="md-avatar-icon md-medium md-warn blue">
+          <md-icon>gamepad</md-icon>
+        </md-avatar>
+      </md-list-item>
+      <md-divider class="md-inset"></md-divider>
+    </md-list>
+    <gmap-map
+    :center="center"
+    :zoom="14"
+    style="width: 100%; height: 300px"
+    >
+      <gmap-marker
+        :key="index"
+        v-for="(m, index) in markers"
+        :position="m.position"
+        :clickable="true"
+        :draggable="true"
+        @click="center=m.position"
+      ></gmap-marker>
+  </gmap-map>
+  <md-list class="md-double-line">
+    <md-list-item>
+      <div class="md-list-text-container">
+        <h2>Numerik Games</h2>
+        <p>Programme complet du festival</p>
+      </div>
+      <md-icon class="white-icon">navigate_next</md-icon>
+    </md-list-item>
+  </md-list>
   </div>
 </template>
-
 <script>
-const GAME = 'Amplified Reality / jeux en projection'
-const PROJ = 'Clair Obscure / projections'
-const PAUSE = 'Pause'
-const INTRO = 'Intro'
-
 export default {
   name: 'schedule',
   data () {
     return {
-      'night1': {
-        'tag': '25 août',
-        'schedule': [
-          {'time': '20h30', 'tag': INTRO},
-          {'time': '20h45', 'tag': GAME},
-          {'time': '21h00', 'tag': PROJ},
-          {'time': '21h45', 'tag': GAME},
-          {'time': '22h00', 'tag': PAUSE},
-          {'time': '22h15', 'tag': GAME},
-          {'time': '22h30', 'tag': PROJ},
-          {'time': '23h15', 'tag': GAME}
-        ]
-      },
-      'night2': {
-        'tag': '26 août',
-        'schedule': [
-          {'time': '20h30', 'tag': INTRO},
-          {'time': '20h45', 'tag': GAME},
-          {'time': '21h00', 'tag': PROJ},
-          {'time': '21h45', 'tag': GAME},
-          {'time': '22h00', 'tag': PAUSE},
-          {'time': '22h15', 'tag': GAME},
-          {'time': '22h30', 'tag': PROJ},
-          {'time': '23h15', 'tag': GAME}
-        ]
-      }
+      center: {lat: 46.778642, lng: 6.641279},
+      markers: [{
+        position: {lat: 46.778642, lng: 6.641279}
+      }]
     }
   }
 }
@@ -70,4 +93,42 @@ export default {
 .schedule {
   margin: 5px;
 }
+
+.schedule .time {
+  background: white;
+  color: #161616;
+  padding: 10px;
+}
+
+.schedule .md-list-text-container {
+  padding-right: 5px;
+  padding-left: 10px;
+}
+
+.schedule .md-theme-default.md-list {
+  background-color: #161616;
+  color: white;
+}
+
+.schedule .md-list-text-container > :nth-child(2){
+  color: grey;
+}
+
+.schedule .md-divider {
+ background-color: grey;
+}
+
+.headerImg {
+  height: 200px;
+  width: 100%;
+}
+
+.schedule .md-theme-default.md-avatar.md-warn.md-avatar-icon.blue {
+  background-color: #2995A8;
+}
+
+.schedule .md-theme-default.md-avatar.md-warn.md-avatar-icon.pink {
+  background-color: #D63C96;
+}
+
 </style>
