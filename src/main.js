@@ -12,9 +12,9 @@ import { store } from './store'
 import Sidenav from '@/components/Sidenav'
 import SocketIO from '@/components/SocketIO'
 
-// const socketInstance = io('http://ng2.comem.ch')
+const socketInstance = io('http://ng2.comem.ch')
 // const socketInstance = io('http://10.192.115.44:3011')
-const socketInstance = io('http://localhost:3011')
+// const socketInstance = io('http://localhost:3011')
 
 Vue.use(VueSocketio, socketInstance, store)
 Vue.use(VueMaterial)
