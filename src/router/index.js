@@ -8,6 +8,10 @@ import Schedule from '@/components/Schedule'
 import Information from '@/components/Information'
 import Queue from '@/components/Queue'
 import Contributors from '@/components/Contributors'
+import MappingInfo from '@/components/Mapping_info'
+import QuiSommeNous from '@/components/qui_somme_nous'
+import JeuxInfo from '@/components/Jeux_info'
+import Concept from '@/components/Concept'
 
 Vue.use(Router)
 
@@ -53,6 +57,26 @@ const router = new Router({
       path: '/mapping',
       name: 'Contributeur',
       component: Contributors
+    },
+    {
+      path: '/mapping_info',
+      name: 'Information - mapping',
+      component: MappingInfo
+    },
+    {
+      path: '/jeux_info',
+      name: 'Information - jeux',
+      component: JeuxInfo
+    },
+    {
+      path: '/qui_somme_nous',
+      name: 'Qui somme-nous ?',
+      component: QuiSommeNous
+    },
+    {
+      path: '/concept',
+      name: 'Concept',
+      component: Concept
     }
   ]
 })
