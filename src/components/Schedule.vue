@@ -67,13 +67,15 @@
   </gmap-map>
   <md-list class="md-double-line">
     <md-divider class="md-inset light"></md-divider>
-    <md-list-item>
-      <div class="md-list-text-container">
-        <h2>Numerik Games</h2>
-        <p>Programme complet du festival</p>
-      </div>
-      <md-icon class="white-icon">navigate_next</md-icon>
-    </md-list-item>
+    <a href="https://www.numerik-games.ch/#programme">
+      <md-list-item>
+        <div class="md-list-text-container">
+          <h2>Numerik Games</h2>
+          <p>Programme complet du festival</p>
+        </div>
+        <md-icon class="white-icon">navigate_next</md-icon>
+      </md-list-item>
+    </a>
   </md-list>
   </div>
 </template>

@@ -103,6 +103,10 @@ body a:active, body a:visited, body a:link  {
   color: white;
 }
 
+#app a:not(.md-button):not(.md-bottom-bar-item):hover {
+  text-decoration: none;
+}
+
 #app .md-list-text-container > :nth-child(2){
   padding-bottom: 5px;
   color: grey;

@@ -13,9 +13,9 @@ import Sidenav from '@/components/Sidenav'
 import SocketIO from '@/components/SocketIO'
 import * as VueGoogleMaps from 'vue2-google-maps'
 
-const socketInstance = io('http://ng2.comem.ch')
+// const socketInstance = io('http://ng2.comem.ch')
 // const socketInstance = io('http://10.192.115.223:3011')
-// const socketInstance = io('http://localhost:3011')
+const socketInstance = io('https://ns3056388.ip-193-70-6.eu/')
 
 Vue.use(VueSocketio, socketInstance, store)
 Vue.use(VueMaterial)
