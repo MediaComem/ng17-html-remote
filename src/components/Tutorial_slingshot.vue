@@ -7,7 +7,7 @@
       </div>
       <img src="../assets/visuel-basket.png"></img>
       <p>Catapultez le projectile dans le panier.</p>
-      <md-button class="md-raised md-accent" @click="onClick()">Jouer</md-button>
+      <md-button class="md-raised" @click="onClick()">Jouer</md-button>
     </div>
   </div>
 </template>

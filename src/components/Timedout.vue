@@ -1,10 +1,8 @@
 <template>
   <div class="welcome">
     <div class="tutorial-container">
-      <div class="text">
-        <h3>Vous avez été déconnecté pour inactivité</h3>
-        <md-button class="md-raised md-primary" @click="startGame()">Jouer</md-button>
-      </div>
+      <h1>Vous avez été déconnecté pour inactivité</h1>
+      <md-button class="md-raised" @click="startGame()">Jouer</md-button>
     </div>
   </div>
 </template>

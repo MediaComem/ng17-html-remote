@@ -7,7 +7,7 @@
       </div>
       <img src="../assets/visuel-target.png"></img>
       <p>Cliquez sur les parties du temple que vous désirez dévoiler.</p>
-      <md-button class="md-raised md-accent" @click="onClick()">Jouer</md-button>
+      <md-button class="md-raised" @click="onClick()">Jouer</md-button>
     </div>
   </div>
 </template>
