@@ -10,6 +10,7 @@ export const store = new Vuex.Store({
     playing: false,
     queuing: false,
     timedout: false,
+    timeoutMessage: 'à cause d\'un problème',
     gameType: 'none',
     gameRunning: 'none',
     message: null,
@@ -54,9 +55,10 @@ export const store = new Vuex.Store({
         window.localStorage.setItem('stats', JSON.stringify(state.stats))
       }
     },
-    disconect (state) {
+    disconect (state, data) {
       state.timedout = true
       state.playing = false
+      state.timeoutMessage = data
     },
     launchGame (state, data) {
       if (!state.playing) {
@@ -74,6 +76,7 @@ export const store = new Vuex.Store({
       state.queue.position = data.position
       state.queue.total = data.total
       state.queuing = true
+      state.playing = false
     },
     setColor (state, color) {
       state.color = color
@@ -180,8 +183,8 @@ export const store = new Vuex.Store({
     socket_setBallSettings (context, data) {
       context.commit('setBallSettings', data)
     },
-    socket_timeout (context) {
-      context.commit('disconect')
+    socket_timeout (context, message) {
+      context.commit('disconect', message)
     },
     addBall (context) {
       setTimeout(function () {

@@ -1,7 +1,7 @@
 <template>
   <div class="welcome">
     <div class="tutorial-container">
-      <h1>Vous avez été déconnecté pour inactivité</h1>
+      <h1>Vous avez été déconnecté {{$store.state.timeoutMessage}}</h1>
       <md-button class="md-raised" @click="startGame()">Jouer</md-button>
     </div>
   </div>
