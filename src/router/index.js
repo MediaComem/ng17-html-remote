@@ -9,7 +9,7 @@ import Information from '@/components/Information'
 import Queue from '@/components/Queue'
 import Contributors from '@/components/Contributors'
 import MappingInfo from '@/components/Mapping_info'
-import QuiSommeNous from '@/components/qui_somme_nous'
+import QuiSommeNous from '@/components/Qui_somme_nous'
 import JeuxInfo from '@/components/Jeux_info'
 import Concept from '@/components/Concept'
 
