@@ -44,7 +44,7 @@
                 </md-list-item>
                 <md-list-item class="md-inset">
                   <md-icon>gamepad</md-icon>
-                  <span><router-link @click.native="close()" to="/jeux_info">Développement de jeux</router-link></span>
+                  <span><router-link @click.native="close()" to="/jeux_info">Les jeux</router-link></span>
                 </md-list-item>
               </md-list>
             </md-list-expand>
