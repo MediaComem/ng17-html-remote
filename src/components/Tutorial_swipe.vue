@@ -1,9 +1,14 @@
 <template>
   <div class="tutorial-swipe">
-    <div>
-      <p>swipe</p>
+    <div class="tutorial-container">
+      <div class="title-container">
+        <h1>Swipe</h1>
+        <hr>
+      </div>
+      <img src="../assets/visuel-target.png"></img>
+      <p>Faite glisser la balle avec votre doigt pour la lancer sur le Temple.</p>
+      <md-button class="md-raised md-accent" @click="onClick()">Jouer</md-button>
     </div>
-    <md-button class="md-raised md-accent" @click="onClick()">Jouer</md-button>
   </div>
 </template>
 

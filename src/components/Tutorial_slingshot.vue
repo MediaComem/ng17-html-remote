@@ -1,9 +1,14 @@
 <template>
   <div class="tutorial-slingshot">
-    <div>
-      <p>slingshot</p>
+    <div class="tutorial-container">
+      <div class="title-container">
+        <h1>Sling</h1>
+        <hr>
+      </div>
+      <img src="../assets/visuel-basket.png"></img>
+      <p>Catapultez le projectile dans le panier.</p>
+      <md-button class="md-raised md-accent" @click="onClick()">Jouer</md-button>
     </div>
-    <md-button class="md-raised md-accent" @click="onClick()">Jouer</md-button>
   </div>
 </template>
 
@@ -23,34 +28,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.controller {
+.tutorial-slingshot {
   position: relative;
-}
-.swip-area {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-.link {
-  position: relative;
-  height: 20px;
-  width: 100px;
-  z-index: 2;
-}
-.ballcount {
-  width: 100px;
-}
-.ball {
-  position: absolute;
-}
-.right {
-  float: right;
-  margin: 5px;
-}
-.angle-lever {
-  position: absolute;
-  z-index: 100;
-  right: 0px;
-  bottom: 0px;
 }
 </style>

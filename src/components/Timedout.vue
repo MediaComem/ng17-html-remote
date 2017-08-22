@@ -1,7 +1,11 @@
 <template>
   <div class="welcome">
-    <h1>Vous êtes déconnecter pour inactivité</h1>
-    <md-button class="md-raised md-primary" @click="startGame()">Jouer</md-button>
+    <div class="tutorial-container">
+      <div class="text">
+        <h3>Vous avez été déconnecté pour inactivité</h3>
+        <md-button class="md-raised md-primary" @click="startGame()">Jouer</md-button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -18,8 +22,11 @@ export default {
 }
 
 </script>
-<style>
+<style scoped>
 .welcome {
   margin: 0 5px;
+}
+.text {
+  display: flex;
 }
 </style>

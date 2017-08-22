@@ -1,7 +1,11 @@
 <template>
   <div class="queue">
-    <h1>Waiting for your turn</h1>
-    <p>you are in position {{$store.state.queue.position}} of {{$store.state.queue.total}}</p>
+    <div class="tutorial-container">
+      <div class="text">
+        <h1>Vous êtes dans la file d'attente</h1>
+        <p>il y a {{$store.state.queue.position}} personne(s) devant vous sur un total de {{$store.state.queue.total}} personne(s) qui attande</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -17,8 +21,12 @@ export default {
 }
 
 </script>
-<style>
+<style scoped>
 .queue {
   margin: 0 5px;
+}
+
+.text * {
+  align-self: center;
 }
 </style>
