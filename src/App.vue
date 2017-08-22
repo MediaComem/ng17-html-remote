@@ -71,7 +71,6 @@ html, body {
   max-width: 480px;
   text-align: left;
 }
-
 body {
   background-color: #161616;
 }

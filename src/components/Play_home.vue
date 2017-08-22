@@ -74,4 +74,41 @@
 .play-home {
   margin: 5px;
 }
+.tutorial-container {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#312ee8+22,ce10cb+69 */
+  background: #D63C96; /* Old browsers */
+  background: -moz-linear-gradient(135deg, #8f1d61 22%, #246172 69%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(135deg, #8f1d61 22%,#246172 69%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #8f1d61 22%,#246172 69%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8f1d61', endColorstr='#246172',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+  position: relative;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 25px;
+  background-color: white;
+  height: 86vh;
+
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+.tutorial-container .md-raised.md-accent {
+  align-self: center;
+}
+.tutorial-container h1{
+  font-size: 10vw;
+  line-height: 10vw;
+  text-align: center;
+}
+.tutorial-container img{
+  width: 80%;
+}
+.tutorial-container .title-container {
+  width: 80%;
+}
+hr {
+  width: 90%;
+}
 </style>

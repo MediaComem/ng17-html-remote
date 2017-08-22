@@ -1,9 +1,14 @@
 <template>
   <div class="tutorial">
-    <div>
-      <p>standard</p>
+    <div class="tutorial-container">
+      <div class="title-container">
+        <h1>Tap</h1>
+        <hr>
+      </div>
+      <img src="../assets/visuel-target.png"></img>
+      <p>Cliquez sur les parties du temple que vous désirez dévoiler.</p>
+      <md-button class="md-raised md-accent" @click="onClick()">Jouer</md-button>
     </div>
-    <md-button class="md-raised md-accent" @click="onClick()">Jouer</md-button>
   </div>
 </template>
 
@@ -23,34 +28,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.controller {
-  position: relative;
-}
-.swip-area {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-.link {
-  position: relative;
-  height: 20px;
-  width: 100px;
-  z-index: 2;
-}
-.ballcount {
-  width: 100px;
-}
-.ball {
-  position: absolute;
-}
-.right {
-  float: right;
-  margin: 5px;
-}
-.angle-lever {
-  position: absolute;
-  z-index: 100;
-  right: 0px;
-  bottom: 0px;
+.text * {
+  align-self: center;
 }
 </style>
