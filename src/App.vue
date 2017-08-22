@@ -81,6 +81,7 @@ body a:active, body a:visited, body a:link  {
 #app .text a:active, #app .text a:visited, #app .text a:link {
   color: #246172;
   font-weight: 400;
+  font-weight: bold;
 }
 
 #app .md-list-text-container h2 {
