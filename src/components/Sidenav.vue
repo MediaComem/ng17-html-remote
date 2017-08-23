@@ -200,7 +200,9 @@ export default {
   #app .sidenav .md-theme-default.md-list {
     background-color: rgba(0, 0, 0, 0);
   }
-
+  #app .md-sidenav-content {
+    overflow: hidden;
+  }
   .md-toolbar {
     z-index: 2;
   }
