@@ -10,7 +10,7 @@
         <md-divider class="md-inset"></md-divider>
       </md-list-item>
       <md-list-item>
-        <div class="time">21h00</div>
+        <div class="time">21:00</div>
         <div class="md-list-text-container">
           <h2>Vidéo mapping</h2>
           <p>Clair-Obscur: HEIG-VD et artistes</p>
