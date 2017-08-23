@@ -14,8 +14,8 @@ import SocketIO from '@/components/SocketIO'
 import VueAnalytics from 'vue-analytics'
 import * as VueGoogleMaps from 'vue2-google-maps'
 
-// const socketInstance = io('http://localhost:3010')
-const socketInstance = io('https://ns3056388.ip-193-70-6.eu', {secure: true})
+const socketInstance = io('http://localhost:3010')
+// const socketInstance = io('https://ns3056388.ip-193-70-6.eu', {secure: true})
 // const socketInstance = io('http://ng2.comem.ch')
 // const socketInstance = io('http://10.192.115.223:3011')
 
