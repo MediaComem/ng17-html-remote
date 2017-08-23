@@ -30,7 +30,7 @@ const router = new Router({
     },
     {
       path: '/information',
-      name: 'Information',
+      name: 'Informations',
       component: Information
     },
     {
@@ -55,7 +55,7 @@ const router = new Router({
     },
     {
       path: '/mapping',
-      name: 'Contributeur',
+      name: 'Vidéo mapping',
       component: Contributors
     },
     {
