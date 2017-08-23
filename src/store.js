@@ -138,6 +138,7 @@ export const store = new Vuex.Store({
   },
   actions: {
     socket_msg (context, message) {
+      console.log('nessage', message)
       if (message.msgType === 'point') {
         context.commit('ADD_POINTS', message.points)
       }
