@@ -35,7 +35,7 @@ Vue.use(VueGoogleMaps, {
   }
 })
 Vue.use(VueAnalytics, {
-  id: 'UA-XXX-X'
+  id: 'UA-105132748-1'
 })
 Vue.use(VueTouch, {name: 'v-touch'})
 Vue.material.registerPalette('ng17-black', {
