@@ -25,9 +25,12 @@
             <md-icon>home</md-icon><span><router-link @click.native="close()" to="/">Accueil</router-link></span>
           </md-list-item>
           <md-divider class="md-inset"></md-divider>
-          <md-list-item>
+          <md-list-item v-if="!isInInfo()">
+            <md-icon>info</md-icon><span><router-link @click.native="close()" to="/information">Information</router-link></span>
+          </md-list-item>
+          <md-list-item v-if="isInInfo()" class="md-active">
             <md-icon>info</md-icon>
-            <span><router-link @click.native="close()" to="/information">Information</router-link></span>
+            <span>Information</span>
             <md-list-expand>
               <md-list>
                 <md-list-item class="md-inset">
@@ -56,7 +59,7 @@
           <md-list-item v-if="!isInHTMLGame()">
             <md-icon>gamepad</md-icon><span><router-link @click.native="close()" to="/play">Jeux</router-link></span>
           </md-list-item>
-          <md-list-item v-if="isInHTMLGame()" ref="listItem">
+          <md-list-item v-if="isInHTMLGame()" class="md-active" ref="listItem">
             <md-icon>gamepad</md-icon>
             <span>
               Jeux
@@ -65,15 +68,15 @@
               <md-list>
                 <md-list-item class="md-inset">
                   <md-icon>help</md-icon>
-                  <span><a @click="toTutorial()" to="/stats">Comment jouer</a></span>
+                  <span @click="toTutorial()" to="/stats">Comment jouer</span>
                 </md-list-item>
                 <md-list-item class="md-inset">
                   <md-icon>videogame_asset</md-icon>
-                  <span><a @click="toPlay()">Play</a></span>
+                  <span@click="toPlay()">Play</span>
                 </md-list-item>
                 <md-list-item class="md-inset">
                   <md-icon>color_lens</md-icon>
-                  <span><a @click="toColorSelection()">couleur</a></span>
+                  <span @click="toColorSelection()">couleur</span>
                 </md-list-item>
                 <md-list-item class="md-inset">
                   <md-icon>show_chart</md-icon>
@@ -133,11 +136,11 @@ export default {
     isInHTMLGame () {
       var paths = ['/play', '/stats', '/color-selection']
       var gameTypes = ['ar', 'none']
-      if (paths.includes(this.$route.path) && !gameTypes.includes(this.$store.state.gameType)) {
-        return true
-      } else {
-        return false
-      }
+      return (paths.includes(this.$route.path) && !gameTypes.includes(this.$store.state.gameType))
+    },
+    isInInfo () {
+      var paths = ['/information', '/mapping_info', '/jeux_info', '/qui_somme_nous', '/concept']
+      return paths.includes(this.$route.path)
     },
     close () {
       this.$refs.leftSidenav.close()

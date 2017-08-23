@@ -11,6 +11,7 @@ import VueTouch from 'vue-touch'
 import { store } from './store'
 import Sidenav from '@/components/Sidenav'
 import SocketIO from '@/components/SocketIO'
+import VueAnalytics from 'vue-analytics'
 import * as VueGoogleMaps from 'vue2-google-maps'
 
 // const socketInstance = io('http://localhost:3010')
@@ -32,6 +33,9 @@ Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyBE5yuVFf2BOTmLCSyfHjpIsGMZZOqzr0o'
   }
+})
+Vue.use(VueAnalytics, {
+  id: 'UA-XXX-X'
 })
 Vue.use(VueTouch, {name: 'v-touch'})
 Vue.material.registerPalette('ng17-black', {
