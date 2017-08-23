@@ -24,7 +24,7 @@ const router = new Router({
       component: ColorSelection
     },
     {
-      path: '/home',
+      path: '/',
       name: 'Home',
       component: Home
     },

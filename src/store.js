@@ -31,7 +31,7 @@ export const store = new Vuex.Store({
       currentBallCount: 0,
       tutorialMode: true
     },
-    redirect: '/home'
+    redirect: '/'
   },
   mutations: {
     connect (state) {

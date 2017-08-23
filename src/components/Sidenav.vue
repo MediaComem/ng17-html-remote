@@ -22,7 +22,7 @@
         </div>
         <md-list>
           <md-list-item>
-            <md-icon>home</md-icon><span><router-link @click.native="close()" to="/home">Accueil</router-link></span>
+            <md-icon>home</md-icon><span><router-link @click.native="close()" to="/">Accueil</router-link></span>
           </md-list-item>
           <md-divider class="md-inset"></md-divider>
           <md-list-item>
@@ -141,14 +141,14 @@ export default {
     },
     close () {
       this.$refs.leftSidenav.close()
-      var paths = ['/home', '/programme', '/mapping']
+      var paths = ['/', '/programme', '/mapping']
       if (paths.includes(this.$route.path) && this.$store.state.playing) {
         this.$socket.emit('leave game')
         this.$store.state.playing = false
       }
     },
     goHome () {
-      this.$router.push('/home')
+      this.$router.push('/')
       this.$refs.leftSidenav.close()
     },
     toColorSelection () {
