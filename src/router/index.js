@@ -55,7 +55,7 @@ const router = new Router({
     },
     {
       path: '/mapping',
-      name: 'Contributeurs',
+      name: 'Vidéo mapping',
       component: Contributors
     },
     {
