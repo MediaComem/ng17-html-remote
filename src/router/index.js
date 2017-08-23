@@ -70,7 +70,7 @@ const router = new Router({
     },
     {
       path: '/qui_somme_nous',
-      name: 'Qui somme-nous ?',
+      name: 'Qui sommes-nous ?',
       component: QuiSommeNous
     },
     {

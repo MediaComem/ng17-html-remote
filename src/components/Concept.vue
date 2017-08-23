@@ -24,7 +24,7 @@
       <a href="http://ng17.heig-vd.ch">
         <md-list-item>
           <div class="md-list-text-container">
-            <h2>Project Eclair|Ages</h2>
+            <h2>Projet Eclair|Ages</h2>
             <p>ng17.heig-vd.ch</p>
           </div>
           <md-icon class="white-icon">navigate_next</md-icon>
