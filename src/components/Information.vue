@@ -4,7 +4,6 @@
       <img src="../assets/ng17-logo-color.svg" />
     </div>
     <md-list>
-      <md-divider class="md-inset light"></md-divider>
       <router-link to="/qui_somme_nous">
         <md-list-item>
           <div class="md-list-text-container">
@@ -43,8 +42,8 @@
       </router-link>
     </md-list>
     <div class="end-logos">
-      <img src="../assets/logo-MEI.svg" />
-      <img src="../assets/logo-MEI.svg" />
+      <img class="heig" src="../assets/HEIG-VD_Logo.svg" />
+      <img class="mei" src="../assets/logo-MEI-black-text.svg" />
     </div>
   </div>
 </template>
@@ -61,15 +60,29 @@ export default {
 
 </script>
 <style>
-.information f
-.information .logo-top  img{
+.information {
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.information .logo-top img{
   margin: 40px 60px;
+}
+img.heig {
+  flex-grow: 3;
+  margin-right: 10px;
+}
+img.mei {
+  flex-grow: 1;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .information .end-logos {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: white;
 }
 .information .end-logos img{
