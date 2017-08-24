@@ -74,7 +74,8 @@ html, body {
 body {
   background-color: #161616;
 }
-body a:active, body a:visited, body a:link  {
+body a:active, body a:visited, body a:link,
+body a:active h2, body a:visited h2, body a:link h2 {
   color: white;
 }
 #app .text a:active, #app .text a:visited, #app .text a:link {
