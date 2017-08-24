@@ -15,7 +15,7 @@
     <router-link  class="item" :to="{ path: '/play' }">
       <div>
         <md-icon class="md-size-4x md-primary">gamepad</md-icon>
-        <p>Jeux</p>
+        <p>Jouer</p>
       </div>
     </router-link>
     <router-link class="item" :to="{ path: '/mapping' }">
