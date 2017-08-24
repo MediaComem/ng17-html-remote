@@ -1,5 +1,7 @@
 <template>
-  <div class="play-home" v-if="!isAGameRunning()">
+  <color-selection v-if="isColorSelection()"></color-selection>
+  <stats v-else-if="isStats()"></stats>
+  <div class="play-home" v-else-if="!isAGameRunning()">
     <p>Il n'y a pas de jeu en ce moment.</p>
     <md-list>
       <md-divider class="md-inset light"></md-divider>
@@ -26,62 +28,78 @@
 </template>
 
 <script>
-import Controller from '@/components/Controller_tap.vue'
-import ControllerSwipe from '@/components/Controller_swipe.vue'
-import ControllerSlingshot from '@/components/Controller_slingshot.vue'
-import Ar from '@/components/Ar.vue'
-import Queue from '@/components/Queue.vue'
-import Timeout from '@/components/Timedout.vue'
-export default {
-  name: 'play-home',
-  components: {
-    'controller': Controller,
-    'controller-swipe': ControllerSwipe,
-    'controller-slingshot': ControllerSlingshot,
-    'ar': Ar,
-    'queue': Queue,
-    'timeout': Timeout
-  },
-  created() {
-    if (this.$store.state.gameType !== 'ar') {
-      this.$socket.emit('play')
-    }
-  },
-  computed: {
-    gameType() {
-      if (this.$store.state.gameType === 'ar') {
-        this.$socket.emit('leave game')
+  import Controller from '@/components/Controller_tap.vue'
+  import ControllerSwipe from '@/components/Controller_swipe.vue'
+  import ControllerSlingshot from '@/components/Controller_slingshot.vue'
+  import Ar from '@/components/Ar.vue'
+  import Queue from '@/components/Queue.vue'
+  import Timeout from '@/components/Timedout.vue'
+  import Stats from '@/components/Stats'
+  import ColorSelection from '@/components/Color_selection'
+  export default {
+    name: 'play-home',
+    components: {
+      'controller': Controller,
+      'controller-swipe': ControllerSwipe,
+      'controller-slingshot': ControllerSlingshot,
+      'ar': Ar,
+      'queue': Queue,
+      'timeout': Timeout,
+      'color-selection': ColorSelection,
+      'stats': Stats
+    },
+    created () {
+      if (this.$store.state.gameType !== 'ar' || !this.$store.state.playing) {
+        console.log('createdddd')
+        this.$store.state.gameWindow = 'play'
+        this.$socket.emit('play')
       }
       return this.$store.state.gameType
     },
-    playing() {
-      return this.$store.state.playing
+    computed: {
+      gameType () {
+        if (this.$store.state.gameType === 'ar') {
+          this.$socket.emit('leave game')
+        }
+        return this.$store.state.gameType
+      },
+      playing () {
+        return this.$store.state.playing
+      },
+      queuing () {
+        return this.$store.state.queuing
+      },
+      gameWindow () {
+        return this.$store.state.gameWindow
+      }
     },
-    queuing() {
-      return this.$store.state.queuing
-    }
-  },
-  methods: {
-    isAGameRunning() {
-      return this.gameType !== 'none'
-    },
-    isPlaying() {
-      return this.playing
-    },
-    isQueuing() {
-      return this.queuing
-    },
-    isTapController() {
-      return this.gameType === 'destruction'
-    },
-    isSwipeController() {
-      return this.gameType === 'target'
-    },
-    isSlingshotController() {
-      return this.gameType === 'bucket'
+    methods: {
+      isAGameRunning () {
+        return this.gameType !== 'none'
+      },
+      isPlaying () {
+        return this.playing
+      },
+      isQueuing () {
+        return this.queuing
+      },
+      isTapController () {
+        return this.gameType === 'destruction'
+      },
+      isSwipeController () {
+        return this.gameType === 'target'
+      },
+      isSlingshotController () {
+        return this.gameType === 'bucket'
+      },
+      isColorSelection () {
+        return this.gameWindow === 'colors'
+      },
+      isStats () {
+        return this.gameWindow === 'stats'
+      }
     }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
