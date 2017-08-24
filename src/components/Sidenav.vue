@@ -103,16 +103,11 @@
 </template>
 <script>
 export default {
-  mounted () {
-    // console.log(this.$refs.listItem.$children[2].$el.click())
-    // this.$refs.listItem.$children
-  },
   props: [
     'headerTitle'
   ],
   computed: {
     header () {
-      console.log(this.$route.name)
       return this.$route.name
     }
   },
