@@ -5,17 +5,22 @@
         <img class="left" src="../assets/logo_NG16.svg"></img>
         <img class="right" src="../assets/ng17-logo-color.svg"></img>
       </div>
-      <p><a href="https://www.numerik-games.ch">Numerik Games</a> est un festical tout public, organisé par la <a href="http://www.ailleurs.ch/">Maison d'Ailleurs</a>, la ville d'Yverdon-les-Bains et la <a href="https://heig-vd.ch/">HEIG-VD</a>, qui propose des conférences, des performances et des animations relatives au thème de la transition numérique.</p>
-      <p>Pour cette édition, nous allons célébrer cette nouvelle ère qui s’ouvre à nous, inondée de nouvelles technologies. Nos modes d’organisation sont bouleversés, de nouvelles pratiques apparaissent, sociales, culturelles, etc. Une transformation profonde est en cours, c’est bien clair ! Faut-il pour autant la voir d’un oeil sombre ?</p>
-      <p>Dans l’<strong>espace gratuit du festival</strong>, vous pourrez y découvrir des créations inédites d’artistes, avec comme thème imposé <a href="http://ng17.heig-vd.ch">«clair-obscur»</a>. Le but est de laissez la chance à des personnes de pouvoir exprimer leur art et vision, ces réalisations seront projetées sur un bâtiment du centre historique de la ville d’Yverdon-les-Bains.</p>
-      <p>Les soirées du 25 au 26 août 2017, des parties de jeux collaboratifs, avec votre téléphone comme manette, transformeront la façade du Temple en écran de jeu géant.</p>
+      <p><a href="https://www.numerik-games.ch">Numerik Games</a> est un festival tout public, organisé par la <a href="http://www.ailleurs.ch/">Maison d'Ailleurs</a>, la <a href="http://www.ylb.ch">ville d'Yverdon-les-Bains</a> et la <a href="https://heig-vd.ch/">HEIG-VD</a>, qui propose des conférences, des performances et des animations relatives au thème de la transition numérique.</p>
+      <p>Le festival a lieu à Yverdon-les-Bains, sur deux sites&nbsp;:<p>
+        <ul class="sites">
+          <li>Parc technologique (<a href="https://www.y-parc.ch">Y-PARC</a>) - <strong>Accès payant</strong></li>
+          <li>Place Pestalozzi (centre-ville) - <strong>Accès gratuit</strong></li>
+        </ul>
+      </p>
+      <p>La performance <strong>Eclair|Ages</strong>, proposée par le MEI, se déroulera de <strong>21h à minuit</strong>, les soirées des <strong>25 et 26 août</strong> sur la <strong>Place Pestalozzi.</strong></p>
+      <p>Vous y assisterez à une alternance entre <strong>vidéo mapping</strong> et <strong>jeux collaboratifs</strong>.</p>
     </div>
     <md-list>
       <md-divider class="md-inset light"></md-divider>
       <a href="https://www.numerik-games.ch">
         <md-list-item>
           <div class="md-list-text-container">
-            <h2>Site web officiel</h2>
+            <h2>Site web officiel du festival</h2>
             <p>www.numerik-games.ch</p>
           </div>
           <md-icon class="white-icon">navigate_next</md-icon>
@@ -63,5 +68,10 @@ export default {
 
 .concept img.right {
   float: right;
+}
+
+.concept ul.sites {
+  padding-left: 20px;
+  list-style-type: circle;
 }
 </style>

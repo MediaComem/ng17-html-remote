@@ -7,7 +7,7 @@
       <router-link to="/qui_somme_nous">
         <md-list-item>
           <div class="md-list-text-container">
-            <h2>Qui somme nous?</h2>
+            <h2>Qui sommes-nous?</h2>
             <p>MEI - Media engeneering institute</p>
           </div>
           <md-icon class="white-icon">navigate_next</md-icon>
@@ -34,7 +34,7 @@
       <router-link to="/jeux_info">
         <md-list-item>
           <div class="md-list-text-container">
-            <h2>Développement de jeux</h2>
+            <h2>Les jeux</h2>
             <p>Amplified Reality</p>
           </div>
           <md-icon class="white-icon">navigate_next</md-icon>
