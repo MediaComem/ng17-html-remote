@@ -1,11 +1,10 @@
 <template>
   <div class="info-jeux">
     <div class="text">
-      <p>L’idée de simuler une expérience en éliminant les risques est très attirante pour l’Homme. C’est le concept qui se trouve derrière chaque jeu vidéo. Donner une opportunité à quiconque de pouvoir voler, d'être le héros de l’histoire, ou de plus simplement casser un mur. Les expériences varient et évoluent, mais la question est toujours la même. Comment rendre cette expérience plus immersive?</p>
-      <p>Aujourd'hui, on se retrouve au milieu d’une transition, d’un côté on a la réalité virtuelle qui permet de placer le joueur dans un univers virtuel a l’aide d’un casque et de l’autre la réalité augmentée, où des objets virtuels se place dans notre monde à travers un écran de smartphone ou de lunettes spécialisées.</p>
-      <p>Avec Amplified Reality nous avons voulu toucher un aspect qui manquait aux deux technologies: le partage de l’expérience. Au lieu d’avoir un univers limité aux écrans des casques et des smartphones, Amplified Reality permet aux joueurs d’interagir avec la façade du temple à travers des manettes de tous genres.</p>
-      <p>Venez jouer a nos jeux à <strong>21h et 22h30</strong> les soirées des <strong>25 et 26 août</strong> sur la <strong>Place Pestalozzi.</strong></p>
-      <p>Un des modes de jeu dépend d’une application qui se trouve ce dessous. Pour ne pas attendre au moment où le jeu est lancé, téléchargez l’application en avance.</p>
+      <p>En alternance avec le vidéo mapping, nous vous proposons deux types de jeux utilisant votre propre téléphone portable comme manette.</p>
+      <p>Certains d'entre eux peuvent être joués directement depuis ce site Web (section <strong>Jouer</strong> du menu), d'autres nécessitent le téléchargement de l'application dédiée <strong>Amplified Reality</strong>.</p>
+      <p>Téléchargez-la dès maintenant pour être parmis les premiers à tenter l'expérience.</p>
+      <p>Les sessions de jeux démarrent à <strong>21h45 et 23h15</strong>, les soirées des <strong>25 et 26 août</strong> sur la <strong>Place Pestalozzi.</strong></p>
     </div>
     <md-list>
       <md-divider class="md-inset light"></md-divider>
