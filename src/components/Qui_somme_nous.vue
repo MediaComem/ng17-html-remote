@@ -2,10 +2,9 @@
   <div class="qui-somme-nous">
     <div class="text">
       <img class="mei-logo" src="../assets/logo-MEI.svg"></img>
-      <p>Nous sommes le Media Engineering Institute (MEI), une unité de recherche de la <a href="https://heig-vd.ch/">HEIG-VD</a> (Haute Ecole d’Ingénierie et Gestion du Canton de Vaud) active dans le domaine des médias numériques.</p>
-      <p>L'institut emploie de jeunes diplômés en <a href="https://heig-vd.ch/formations/bachelor/filieres/ingenierie-des-medias">ingénierie des médias.</a> Ils développent des applications, planifient des campagnes, exécutent des mandats, réalisent des projets, etc..</p>
-      <p>Nos activités sont utilisées pour enrichir les cours, avec des cas concrets qui reflètent les besoins du marché...</p>
-      <p>Nous soutenons activement le festival <a href="https://www.numerik-games.ch/">Numerik Games</a> d'un genre nouveau depuis sa création. Pour 2017, nous souhaitions embarquer un maximum de passionnés dans l'aventure.</p>
+      <p>Nous sommes le MEI (Media Engineering Institute), une unité de recherche de la <a href="https://heig-vd.ch/">HEIG-VD</a> (Haute Ecole d’Ingénierie et Gestion du Canton de Vaud) active dans le domaine des médias numériques et qui emploie de jeunes diplômés en <a href="https://heig-vd.ch/formations/bachelor/filieres/ingenierie-des-medias">ingénierie des médias.</a></p>
+      <p>Nous soutenons activement le festival <a href="https://www.numerik-games.ch/">Numerik Games</a>, d'un genre nouveau, depuis sa création (voir ci-dessous nos performances pour les éditions précédentes).</p>
+      <p>Pour 2017, nous vous proposons <strong>Eclair|Ages</strong>, une performance qui allie vidéo mapping et jeux collaboratifs.</p>
     </div>
     <md-list>
       <md-divider class="md-inset light"></md-divider>
