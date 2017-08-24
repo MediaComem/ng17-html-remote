@@ -82,8 +82,10 @@ export const store = new Vuex.Store({
       state.color = color
     },
     setGameType (state, gameType) {
-      state.game.tutorialMode = true
-      state.gameType = gameType
+      if (gameType !== state.gameType) {
+        state.game.tutorialMode = true
+        state.gameType = gameType
+      }
     },
     setPseudo (state, pseudo) {
       state.pseudo = pseudo
