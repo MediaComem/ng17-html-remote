@@ -9,6 +9,7 @@ export const store = new Vuex.Store({
     connect: false,
     playing: false,
     queuing: false,
+    gameWindow: 'play',
     timedout: false,
     timeoutMessage: 'à cause d\'un problème',
     gameType: 'none',
@@ -61,9 +62,9 @@ export const store = new Vuex.Store({
       state.timeoutMessage = data
     },
     launchGame (state, data) {
-      if (!state.playing) {
-        state.color = data.color
-      }
+      // if (!state.playing) {
+      state.color = data.color
+      // }
       state.queuing = false
       state.timedout = false
       if (state.gameType === 'ar') {
@@ -92,7 +93,7 @@ export const store = new Vuex.Store({
     },
     newOrderedColors (state, colors) {
       state.colors = colors
-      router.push({'path': '/color-selection'})
+      state.gameWindow = 'colors'
     },
     redirect (state, redirect) {
       state.redirect = redirect

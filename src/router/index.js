@@ -1,12 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import ColorSelection from '@/components/Color_selection'
 import PlayHome from '@/components/Play_home'
-import Stats from '@/components/Stats'
 import Schedule from '@/components/Schedule'
 import Information from '@/components/Information'
-import Queue from '@/components/Queue'
 import Contributors from '@/components/Contributors'
 import MappingInfo from '@/components/Mapping_info'
 import QuiSommeNous from '@/components/Qui_somme_nous'
@@ -18,11 +15,6 @@ Vue.use(Router)
 const router = new Router({
   mode: 'history',
   routes: [
-    {
-      path: '/color-selection',
-      name: 'Color Selection',
-      component: ColorSelection
-    },
     {
       path: '/',
       name: 'Home',
@@ -39,19 +31,9 @@ const router = new Router({
       component: PlayHome
     },
     {
-      path: '/stats',
-      name: 'Statistiques',
-      component: Stats
-    },
-    {
       path: '/programme',
       name: 'Programme',
       component: Schedule
-    },
-    {
-      path: '/queue/:type',
-      name: 'Queue',
-      component: Queue
     },
     {
       path: '/mapping',

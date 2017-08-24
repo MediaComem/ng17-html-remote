@@ -68,7 +68,7 @@
               <md-list>
                 <md-list-item class="md-inset">
                   <md-icon>help</md-icon>
-                  <span @click="toTutorial()" to="/stats">Comment jouer</span>
+                  <span @click="toTutorial()">Comment jouer</span>
                 </md-list-item>
                 <md-list-item class="md-inset">
                   <md-icon>videogame_asset</md-icon>
@@ -80,7 +80,7 @@
                 </md-list-item>
                 <md-list-item class="md-inset">
                   <md-icon>show_chart</md-icon>
-                  <span><router-link @click.native="close()" to="/stats">Statistique</router-link></span>
+                  <span @click="toStats()">Statistique</span>
                 </md-list-item>
               </md-list>
             </md-list-expand>
@@ -139,7 +139,7 @@ export default {
     },
     close () {
       this.$refs.leftSidenav.close()
-      var paths = ['/', '/programme', '/mapping']
+      var paths = ['/', '/concept', '/qui_somme_nous', '/information', '/programme', '/mapping']
       if (paths.includes(this.$route.path) && this.$store.state.playing) {
         this.$socket.emit('leave game')
         this.$store.state.playing = false
@@ -149,11 +149,16 @@ export default {
       this.$router.push('/')
       this.$refs.leftSidenav.close()
     },
+    toStats () {
+      this.close()
+      this.$store.state.gameWindow = 'stats'
+    },
     toColorSelection () {
       this.close()
       this.$socket.emit('get colors')
     },
     toTutorial () {
+      this.$store.state.gameWindow = 'play'
       this.close()
       this.$store.state.game.tutorialMode = true
       if (this.$route.path !== '/play') {
@@ -162,6 +167,7 @@ export default {
     },
     toPlay () {
       this.close()
+      this.$store.state.gameWindow = 'play'
       if (this.$route.path !== '/play') {
         this.$router.push('/play')
       }

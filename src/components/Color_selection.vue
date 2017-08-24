@@ -21,7 +21,7 @@
       changeColor (color) {
         this.$socket.emit('set new color', {'newColor': color, 'oldColor': this.$store.state.color})
         this.$store.commit('setColor', color)
-        this.$router.push('/play')
+        this.$store.state.gameWindow = 'play'
       }
     },
     created () {

@@ -1,5 +1,7 @@
 <template>
-  <div class="play-home" v-if="!isAGameRunning()">
+  <color-selection v-if="isColorSelection()"></color-selection>
+  <stats v-else-if="isStats()"></stats>
+  <div class="play-home" v-else-if="!isAGameRunning()">
     il n'y a pas de jeux en ce moment
   </div>
   <timeout v-else-if="$store.state.timedout"></timeout>
@@ -17,6 +19,8 @@
   import Ar from '@/components/Ar.vue'
   import Queue from '@/components/Queue.vue'
   import Timeout from '@/components/Timedout.vue'
+  import Stats from '@/components/Stats'
+  import ColorSelection from '@/components/Color_selection'
   export default {
     name: 'play-home',
     components: {
@@ -25,10 +29,14 @@
       'controller-slingshot': ControllerSlingshot,
       'ar': Ar,
       'queue': Queue,
-      'timeout': Timeout
+      'timeout': Timeout,
+      'color-selection': ColorSelection,
+      'stats': Stats
     },
     created () {
-      if (this.$store.state.gameType !== 'ar') {
+      if (this.$store.state.gameType !== 'ar' || !this.$store.state.playing) {
+        console.log('createdddd')
+        this.$store.state.gameWindow = 'play'
         this.$socket.emit('play')
       }
     },
@@ -44,6 +52,9 @@
       },
       queuing () {
         return this.$store.state.queuing
+      },
+      gameWindow () {
+        return this.$store.state.gameWindow
       }
     },
     methods: {
@@ -64,6 +75,12 @@
       },
       isSlingshotController () {
         return this.gameType === 'bucket'
+      },
+      isColorSelection () {
+        return this.gameWindow === 'colors'
+      },
+      isStats () {
+        return this.gameWindow === 'stats'
       }
     }
   }
