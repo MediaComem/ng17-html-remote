@@ -51,16 +51,21 @@ html, body {
   height: 100%;
   width: 100%;
 }
-
+body {
+  background-color: white;
+}
 #app {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background-color: #161616;
   color: white;
-  margin: 0px;
+  margin: 0px auto;
   padding: 0px;
   font-weight: 300;
+  max-width: 500px
+
 }
 
 #app a:active, #app a:visited, #app a:link {
@@ -68,12 +73,10 @@ html, body {
 }
 
 .wrap {
-  max-width: 480px;
+  max-width: 500px;
   text-align: left;
 }
-body {
-  background-color: #161616;
-}
+
 body a:active, body a:visited, body a:link,
 body a:active h2, body a:visited h2, body a:link h2 {
   color: white;

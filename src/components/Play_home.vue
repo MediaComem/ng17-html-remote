@@ -35,7 +35,6 @@
     },
     created () {
       if (this.$store.state.gameType !== 'ar' || !this.$store.state.playing) {
-        console.log('createdddd')
         this.$store.state.gameWindow = 'play'
         this.$socket.emit('play')
       }
