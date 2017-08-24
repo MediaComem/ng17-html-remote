@@ -2,7 +2,10 @@
   <color-selection v-if="isColorSelection()"></color-selection>
   <stats v-else-if="isStats()"></stats>
   <div class="play-home" v-else-if="!isAGameRunning()">
-    <p>Il n'y a pas de jeu en ce moment.</p>
+    <div class="text">
+      <p>Il n'y a pas de jeu en ce moment...</p>
+      <p>Rendez-vous à la prochaine session !</p>
+    </div>
     <md-list>
       <md-divider class="md-inset light"></md-divider>
       <router-link to="/programme">

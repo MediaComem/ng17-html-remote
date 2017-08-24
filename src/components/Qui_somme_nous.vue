@@ -2,9 +2,8 @@
   <div class="qui-somme-nous">
     <div class="text">
       <img class="mei-logo" src="../assets/logo-MEI.svg"></img>
-      <p>Nous sommes le MEI (Media Engineering Institute), une unité de recherche de la <a href="https://heig-vd.ch/">HEIG-VD</a> (Haute Ecole d’Ingénierie et Gestion du Canton de Vaud) active dans le domaine des médias numériques et qui emploie de jeunes diplômés en <a href="https://heig-vd.ch/formations/bachelor/filieres/ingenierie-des-medias">ingénierie des médias.</a></p>
-      <p>Nous soutenons activement le festival <a href="https://www.numerik-games.ch/">Numerik Games</a>, d'un genre nouveau, depuis sa création (voir ci-dessous nos performances pour les éditions précédentes).</p>
-      <p>Pour 2017, nous vous proposons <strong>Eclair|Ages</strong>, une performance qui allie vidéo mapping et jeux collaboratifs.</p>
+      <p>Nous sommes le MEI <span class="nota-bene">(Media Engineering Institute)</span>, une unité de recherche de la <a href="https://heig-vd.ch/">HEIG-VD</a> <span class="nota-bene">(Haute Ecole d’Ingénierie et Gestion du Canton de Vaud)</span> active dans le domaine des médias numériques et qui emploie de jeunes diplômés en <a href="https://heig-vd.ch/formations/bachelor/filieres/ingenierie-des-medias">ingénierie des médias.</a></p>
+      <p>Nous soutenons activement le festival <a href="https://www.numerik-games.ch/">Numerik Games</a>, d'un genre nouveau, depuis sa création <span class="nota-bene">(voir ci-dessous nos performances pour les éditions précédentes)</span>.</p>
     </div>
     <md-list>
       <md-divider class="md-inset light"></md-divider>
@@ -48,5 +47,10 @@ export default {
 
 .mei-logo {
   margin: 30px 20px;
+}
+
+.nota-bene {
+  font-style: italic;
+  font-size: 0.9em;
 }
 </style>

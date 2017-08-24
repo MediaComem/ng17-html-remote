@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <router-link  class="item" :to="{ path: '/information' }">
+    <router-link class="item" :to="{ path: '/information' }">
       <div>
         <md-icon class="md-size-4x md-primary">info</md-icon>
         <p>Information</p>
@@ -12,7 +12,7 @@
         <p>Programme</p>
       </div>
     </router-link>
-    <router-link  class="item" :to="{ path: '/play' }">
+    <router-link class="item" :to="{ path: '/play' }">
       <div>
         <md-icon class="md-size-4x md-primary">gamepad</md-icon>
         <p>Jouer</p>
@@ -21,10 +21,10 @@
     <router-link class="item" :to="{ path: '/mapping' }">
       <div>
         <md-icon class="md-size-4x md-primary">movie</md-icon>
-        <p>Vidéo mapping</p>
+        <p>Les contributions</p>
       </div>
     </router-link>
-    <a  class="item" href="https://www.facebook.com/ng17mapping/">
+    <a class="item" href="https://www.facebook.com/ng17mapping/">
       <div>
         <md-icon md-iconset="fa fa-facebook-official" class="md-size-4x md-primary"></md-icon>
         <p>Facebook</p>
@@ -59,6 +59,7 @@ export default {
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
 }
+
 .item {
   display: flex;
   flex: 1 50%;
@@ -66,16 +67,24 @@ export default {
   height: 27vh;
   justify-content: center;
 }
+
 .item p {
   width: 100%;
   text-align: center;
 }
 
-.home .fa-facebook-official, .home .fa-instagram {
+.home .fa-facebook-official,
+.home .fa-instagram {
   min-width: 82px;
   width: 82px;
 }
-.home .fa-facebook-official::before, .home .fa-instagram::before {
+
+.home .fa-facebook-official::before,
+.home .fa-instagram::before {
   color: grey;
+}
+
+.home div {
+  text-align: center;
 }
 </style>

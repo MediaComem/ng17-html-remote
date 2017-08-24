@@ -27,7 +27,7 @@ const router = new Router({
     },
     {
       path: '/play',
-      name: 'Jeux',
+      name: 'Jouer',
       component: PlayHome
     },
     {
@@ -37,22 +37,22 @@ const router = new Router({
     },
     {
       path: '/mapping',
-      name: 'Vidéo mapping',
+      name: 'Les contributions',
       component: Contributors
     },
     {
       path: '/mapping_info',
-      name: 'Info mapping',
+      name: 'Vidéo mapping',
       component: MappingInfo
     },
     {
       path: '/jeux_info',
-      name: 'Info jeux',
+      name: 'Les jeux',
       component: JeuxInfo
     },
     {
       path: '/qui_somme_nous',
-      name: 'Qui sommes-nous ?',
+      name: 'Qui sommes-nous?',
       component: QuiSommeNous
     },
     {

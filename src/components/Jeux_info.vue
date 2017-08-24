@@ -1,7 +1,7 @@
 <template>
   <div class="info-jeux">
     <div class="text">
-      <p>En alternance avec le vidéo mapping, nous vous proposons deux types de jeux utilisant votre propre téléphone portable comme manette.</p>
+      <p>En alternance avec le vidéo mapping, nous vous proposons <strong>Amplified Reality</strong>, un ensemble de jeux utilisant votre propre téléphone portable comme manette.</p>
       <p>Certains d'entre eux peuvent être joués directement depuis ce site Web (section <strong>Jouer</strong> du menu), d'autres nécessitent le téléchargement de l'application dédiée <strong>Amplified Reality</strong>.</p>
       <p>Téléchargez-la dès maintenant pour être parmis les premiers à tenter l'expérience.</p>
       <p>Les sessions de jeux démarrent à <strong>21h45 et 23h15</strong>, les soirées des <strong>25 et 26 août</strong> sur la <strong>Place Pestalozzi.</strong></p>

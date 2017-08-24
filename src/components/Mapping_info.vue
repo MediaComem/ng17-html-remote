@@ -14,8 +14,8 @@
             <md-icon>movie</md-icon>
           </md-avatar>
           <div class="md-list-text-container">
-            <h2>Vidéo mapping</h2>
-            <p>Les artistes de l'appel à projets</p>
+            <h2>Les contributions</h2>
+            <p>Artistes de l'appel à projets</p>
           </div>
           <md-icon class="white-icon">navigate_next</md-icon>
         </router-link>

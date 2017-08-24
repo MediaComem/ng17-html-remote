@@ -9,7 +9,7 @@
       <h2 v-if="isHeaderText()" class="md-title logo">{{ header }}</h2>
       <img v-else class="logo" src="../assets/logo-EA.svg" />
       <div class="edge-button right">
-        <md-button class="md-icon-button" @click.native="close">
+        <md-button class="md-icon-button" @click.native="goHome">
           <md-icon>home</md-icon>
         </md-button>
       </div>
@@ -35,7 +35,7 @@
               <md-list>
                 <md-list-item class="md-inset">
                   <md-icon>help</md-icon>
-                  <span><router-link @click.native="close()" to="/qui_somme_nous">Qui somme nous ?</router-link></span>
+                  <span><router-link @click.native="close()" to="/qui_somme_nous">Qui sommes-nous ?</router-link></span>
                 </md-list-item>
                 <md-list-item class="md-inset">
                   <md-icon>lightbulb_outline</md-icon>
@@ -56,13 +56,13 @@
             <md-icon>view_list</md-icon>
             <span><router-link @click.native="close()" to="/programme">Programme</router-link></span>
           </md-list-item>
-          <md-list-item v-if="!isInHTMLGame()">
-            <md-icon>gamepad</md-icon><span><router-link @click.native="close()" to="/play">Jeux</router-link></span>
+          <md-list-item v-if="!isInHTMLGame()" class="play-item">
+            <md-icon>gamepad</md-icon><span><router-link @click.native="close()" to="/play">Jouer</router-link></span>
           </md-list-item>
           <md-list-item v-if="isInHTMLGame()" class="md-active" ref="listItem">
             <md-icon>gamepad</md-icon>
             <span>
-              Jeux
+              Jouer
             </span>
             <md-list-expand>
               <md-list>
@@ -87,7 +87,7 @@
           </md-list-item>
           <md-list-item>
             <md-icon>movie</md-icon>
-            <span><router-link @click.native="close()" to="/mapping">Vidéo mapping</router-link></span>
+            <span><router-link @click.native="close()" to="/mapping">Les contributions</router-link></span>
           </md-list-item>
           <md-divider class="md-inset"></md-divider>
           <md-list-item>
@@ -196,6 +196,10 @@ export default {
   .sidenav .md-list-item.md-list-item-expand,
   .sidenav .md-theme-default.md-toolbar {
     background-color: rgba(0, 0, 0, 0);
+  }
+
+  .sidenav .play-item {
+    background-color:rgba(255, 255, 255, 0.05);
   }
 
   #app .sidenav .md-theme-default.md-list {

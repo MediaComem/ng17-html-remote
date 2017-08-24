@@ -1,6 +1,8 @@
 <template>
   <div class="contrib">
-    <p>Voici un aperçu des contributions des artistes, que vous pourrez découvrir lors des sessions de vidéo mapping, à partir de <strong>21h et 22h30</strong>, les soirées des <strong>25 et 26 août</strong>, sur la <strong>Place Pestalozzi</strong>.</p>
+    <div class="text">
+      <p>Voici un aperçu des contributions des artistes, que vous pourrez découvrir lors des sessions de vidéo mapping, à partir de <strong>21h et 22h30</strong>, les soirées des <strong>25 et 26 août</strong>, sur la <strong>Place Pestalozzi</strong>.</p>
+    </div>
     <ul>
       <li v-for="contrib in contributions">
         <md-card md-with-hover>
