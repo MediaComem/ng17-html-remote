@@ -1,7 +1,7 @@
 <template>
   <div class="stats">
     <div class="tutorial-container">
-      <h3>Tire: {{ $store.state.stats.ballCount }}</h3>
+      <h3>Nombre de balles lancées: {{ $store.state.stats.ballCount }}</h3>
       <h3>Points: {{ $store.state.stats.points }}</h3>
       <md-button class="md-raised" @click="resetPoints()">reset</md-button>
     </div>

@@ -6,7 +6,7 @@
         <hr>
       </div>
       <img src="../assets/visuel-target.png"></img>
-      <p>Faite glisser la balle avec votre doigt pour la lancer sur le Temple.</p>
+      <p>Faites glisser la balle avec votre doigt pour la lancer sur le Temple.</p>
       <md-button class="md-raised" @click="onClick()">Jouer</md-button>
     </div>
   </div>

@@ -8,18 +8,57 @@
     </div>
     <md-list>
       <md-divider class="md-inset light"></md-divider>
-      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+
+      <a v-if="IOS" href="https://itunes.apple.com/ch/app/amplified-reality/id1272141234?mt=8">
         <md-list-item>
           <md-avatar class="md-avatar-icon md-medium md-warn blue">
             <md-icon>file_download</md-icon>
           </md-avatar>
           <div class="md-list-text-container">
             <h2>Télécharger Amplified Reality</h2>
-            <p>Application IOS et Android</p>
+            <p>Application IOS</p>
           </div>
           <md-icon class="white-icon">navigate_next</md-icon>
         </md-list-item>
       </a>
+      <a v-else-if="Android" href="https://play.google.com/store/apps/details?id=ch.heigvd.po.amplifiedreality">
+        <md-list-item>
+          <md-avatar class="md-avatar-icon md-medium md-warn blue">
+            <md-icon>file_download</md-icon>
+          </md-avatar>
+          <div class="md-list-text-container">
+            <h2>Télécharger Amplified Reality</h2>
+            <p>Application Android</p>
+          </div>
+          <md-icon class="white-icon">navigate_next</md-icon>
+        </md-list-item>
+      </a>
+      <div v-else>
+        <a href="https://play.google.com/store/apps/details?id=ch.heigvd.po.amplifiedreality">
+          <md-list-item>
+            <md-avatar class="md-avatar-icon md-medium md-warn blue">
+              <md-icon>file_download</md-icon>
+            </md-avatar>
+            <div class="md-list-text-container">
+              <h2>Télécharger Amplified Reality</h2>
+              <p>Application Android</p>
+            </div>
+            <md-icon class="white-icon">navigate_next</md-icon>
+          </md-list-item>
+        </a>
+        <a href="https://itunes.apple.com/ch/app/amplified-reality/id1272141234?mt=8">
+          <md-list-item>
+            <md-avatar class="md-avatar-icon md-medium md-warn blue">
+              <md-icon>file_download</md-icon>
+            </md-avatar>
+            <div class="md-list-text-container">
+              <h2>Télécharger Amplified Reality</h2>
+              <p>Application IOS</p>
+            </div>
+            <md-icon class="white-icon">navigate_next</md-icon>
+          </md-list-item>
+        </a>
+      </div>
       <router-link to="/play">
         <md-list-item>
           <md-avatar class="md-avatar-icon md-medium md-warn blue">
@@ -40,6 +79,16 @@
 
 export default {
   name: 'info-jeux',
+  computed: {
+    IOS () {
+      console.log(this.$store.state.os)
+      return this.$store.state.os === 'IOS'
+    },
+    Android () {
+      console.log(this.$store.state.os)
+      return this.$store.state.os === 'Android'
+    }
+  },
   data () {
     return {
     }
