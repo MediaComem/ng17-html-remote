@@ -37,7 +37,6 @@ export default {
         var yRatio = 28 * (1 - (yPos / this.$refs.templeImage.height)) - 1
         this.$store.commit('addToBallCount')
         var data = {
-          'senderId': this.$socket.id,
           'shotType': 'target',
           'color': this.$store.getters.getColorForUnity,
           'position': {

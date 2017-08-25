@@ -11,10 +11,11 @@ import VueTouch from 'vue-touch'
 import { store } from './store'
 import Sidenav from '@/components/Sidenav'
 import SocketIO from '@/components/SocketIO'
+import VueAnalytics from 'vue-analytics'
 import * as VueGoogleMaps from 'vue2-google-maps'
 
-const socketInstance = io('http://localhost:3011')
-// const socketInstance = io('https://ns3056388.ip-193-70-6.eu', {secure: true})
+// const socketInstance = io('http://localhost:3010')
+const socketInstance = io('https://ns3056388.ip-193-70-6.eu', {secure: true})
 // const socketInstance = io('http://ng2.comem.ch')
 // const socketInstance = io('http://10.192.115.223:3011')
 
@@ -32,6 +33,9 @@ Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyBE5yuVFf2BOTmLCSyfHjpIsGMZZOqzr0o'
   }
+})
+Vue.use(VueAnalytics, {
+  id: 'UA-105132748-1'
 })
 Vue.use(VueTouch, {name: 'v-touch'})
 Vue.material.registerPalette('ng17-black', {

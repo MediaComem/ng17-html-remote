@@ -1,8 +1,10 @@
 <template>
   <div class="stats">
-    <p>Tire: {{ $store.state.stats.ballCount }}</p>
-    <p>Points: {{ $store.state.stats.points }}</p>
-    <md-button class="md-raised" @click="resetPoints()">reset</md-button>
+    <div class="tutorial-container">
+      <h3>Tire: {{ $store.state.stats.ballCount }}</h3>
+      <h3>Points: {{ $store.state.stats.points }}</h3>
+      <md-button class="md-raised" @click="resetPoints()">reset</md-button>
+    </div>
   </div>
 </template>
 

@@ -9,6 +9,7 @@ export const store = new Vuex.Store({
     connect: false,
     playing: false,
     queuing: false,
+    gameWindow: 'play',
     timedout: false,
     timeoutMessage: 'à cause d\'un problème',
     gameType: 'none',
@@ -31,7 +32,7 @@ export const store = new Vuex.Store({
       currentBallCount: 0,
       tutorialMode: true
     },
-    redirect: '/home'
+    redirect: '/'
   },
   mutations: {
     connect (state) {
@@ -61,9 +62,9 @@ export const store = new Vuex.Store({
       state.timeoutMessage = data
     },
     launchGame (state, data) {
-      if (!state.playing) {
-        state.color = data.color
-      }
+      // if (!state.playing) {
+      state.color = data.color
+      // }
       state.queuing = false
       state.timedout = false
       if (state.gameType === 'ar') {
@@ -82,15 +83,17 @@ export const store = new Vuex.Store({
       state.color = color
     },
     setGameType (state, gameType) {
-      state.game.tutorialMode = true
-      state.gameType = gameType
+      if (gameType !== state.gameType) {
+        state.game.tutorialMode = true
+        state.gameType = gameType
+      }
     },
     setPseudo (state, pseudo) {
       state.pseudo = pseudo
     },
     newOrderedColors (state, colors) {
       state.colors = colors
-      router.push({'path': '/color-selection'})
+      state.gameWindow = 'colors'
     },
     redirect (state, redirect) {
       state.redirect = redirect
@@ -138,6 +141,7 @@ export const store = new Vuex.Store({
   },
   actions: {
     socket_msg (context, message) {
+      console.log('nessage', message)
       if (message.msgType === 'point') {
         context.commit('ADD_POINTS', message.points)
       }

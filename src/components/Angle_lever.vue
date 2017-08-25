@@ -82,18 +82,18 @@ input[type=range]::-webkit-slider-runnable-track {
   width: 175px;
   heigh: 4px;
   cursor: pointer;
-  background: black;
+  background: white;
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: black;
+  background: white;
 }
 
 input[type=range]::-moz-range-track {
   width: 175px;
   heigh: 4px;
   cursor: pointer;
-  background: black;
+  background: white;
 }
 
 input[type=range]::-ms-track {

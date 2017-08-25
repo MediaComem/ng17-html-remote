@@ -64,6 +64,7 @@ export default {
     canvas.style.height = this.$refs.swipArea.offsetHeight
     ctx = canvas.getContext('2d')
     ctx.lineWidth = 15
+    ctx.strokeStyle = 'white'
     ctx.beginPath()
     ctx.moveTo((pin.left.left + (pin.size / 2)) * 5, (pin.left.top + (pin.size / 2)) * 5)
     ctx.lineTo((ball.position.left + (ball.size / 2)) * 5, (ball.position.top + ball.size) * 5)
@@ -95,7 +96,7 @@ export default {
       noGyro: '',
       color: {
         player: this.$store.getters.getColor.hex,
-        pins: 'black'
+        pins: 'white'
       },
       canvas: this.$refs.canvas
     }

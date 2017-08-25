@@ -9,30 +9,33 @@
       <h2 v-if="isHeaderText()" class="md-title logo">{{ header }}</h2>
       <img v-else class="logo" src="../assets/logo-EA.svg" />
       <div class="edge-button right">
-        <md-button class="md-icon-button" @click.native="close">
+        <md-button class="md-icon-button" @click.native="goHome">
           <md-icon>home</md-icon>
         </md-button>
       </div>
     </md-toolbar>
     <md-sidenav class="md-left" ref="leftSidenav">
       <md-toolbar class="md-large">
-        <div class="md-toolbar-container" @click="goHome">
+        <div class="md-toolbar-container" @click="close">
           <md-icon class="sidebar-home">menu</md-icon>
           <h3 class="md-title">Menu</h3>
         </div>
         <md-list>
           <md-list-item>
-            <md-icon>home</md-icon><span><router-link @click.native="close()" to="/home">Accueil</router-link></span>
+            <md-icon>home</md-icon><span><router-link @click.native="close()" to="/">Accueil</router-link></span>
           </md-list-item>
           <md-divider class="md-inset"></md-divider>
-          <md-list-item>
+          <md-list-item v-if="!isInInfo()">
+            <md-icon>info</md-icon><span><router-link @click.native="close()" to="/information">Information</router-link></span>
+          </md-list-item>
+          <md-list-item v-if="isInInfo()" class="md-active">
             <md-icon>info</md-icon>
-            <span><router-link @click.native="close()" to="/information">Information</router-link></span>
+            <span>Information</span>
             <md-list-expand>
               <md-list>
                 <md-list-item class="md-inset">
                   <md-icon>help</md-icon>
-                  <span><router-link @click.native="close()" to="/qui_somme_nous">Qui somme nous ?</router-link></span>
+                  <span><router-link @click.native="close()" to="/qui_somme_nous">Qui sommes-nous ?</router-link></span>
                 </md-list-item>
                 <md-list-item class="md-inset">
                   <md-icon>lightbulb_outline</md-icon>
@@ -53,38 +56,38 @@
             <md-icon>view_list</md-icon>
             <span><router-link @click.native="close()" to="/programme">Programme</router-link></span>
           </md-list-item>
-          <md-list-item v-if="!isInHTMLGame()">
-            <md-icon>gamepad</md-icon><span><router-link @click.native="close()" to="/play">Jeux</router-link></span>
+          <md-list-item v-if="!isInHTMLGame()" class="play-item">
+            <md-icon>gamepad</md-icon><span><router-link @click.native="close()" to="/play">Jouer</router-link></span>
           </md-list-item>
-          <md-list-item v-if="isInHTMLGame()" ref="listItem">
+          <md-list-item v-if="isInHTMLGame()" class="md-active" ref="listItem">
             <md-icon>gamepad</md-icon>
             <span>
-              Jeux
+              Jouer
             </span>
             <md-list-expand>
               <md-list>
                 <md-list-item class="md-inset">
                   <md-icon>help</md-icon>
-                  <span><a @click="toTutorial()" to="/stats">Comment jouer</a></span>
+                  <span @click="toTutorial()">Comment jouer</span>
                 </md-list-item>
                 <md-list-item class="md-inset">
                   <md-icon>videogame_asset</md-icon>
-                  <span><a @click="toPlay()">Play</a></span>
+                  <span@click="toPlay()">Play</span>
                 </md-list-item>
                 <md-list-item class="md-inset">
                   <md-icon>color_lens</md-icon>
-                  <span><a @click="toColorSelection()">couleur</a></span>
+                  <span @click="toColorSelection()">couleur</span>
                 </md-list-item>
                 <md-list-item class="md-inset">
                   <md-icon>show_chart</md-icon>
-                  <span><router-link @click.native="close()" to="/stats">Statistique</router-link></span>
+                  <span @click="toStats()">Statistique</span>
                 </md-list-item>
               </md-list>
             </md-list-expand>
           </md-list-item>
           <md-list-item>
             <md-icon>movie</md-icon>
-            <span><router-link @click.native="close()" to="/mapping">Vidéo mapping</router-link></span>
+            <span><router-link @click.native="close()" to="/mapping">Les contributions</router-link></span>
           </md-list-item>
           <md-divider class="md-inset"></md-divider>
           <md-list-item>
@@ -100,16 +103,11 @@
 </template>
 <script>
 export default {
-  mounted () {
-    // console.log(this.$refs.listItem.$children[2].$el.click())
-    // this.$refs.listItem.$children
-  },
   props: [
     'headerTitle'
   ],
   computed: {
     header () {
-      console.log(this.$route.name)
       return this.$route.name
     }
   },
@@ -133,29 +131,34 @@ export default {
     isInHTMLGame () {
       var paths = ['/play', '/stats', '/color-selection']
       var gameTypes = ['ar', 'none']
-      if (paths.includes(this.$route.path) && !gameTypes.includes(this.$store.state.gameType)) {
-        return true
-      } else {
-        return false
-      }
+      return (paths.includes(this.$route.path) && !gameTypes.includes(this.$store.state.gameType))
+    },
+    isInInfo () {
+      var paths = ['/information', '/mapping_info', '/jeux_info', '/qui_somme_nous', '/concept']
+      return paths.includes(this.$route.path)
     },
     close () {
       this.$refs.leftSidenav.close()
-      var paths = ['/home', '/programme', '/mapping']
+      var paths = ['/', '/concept', '/qui_somme_nous', '/information', '/programme', '/mapping']
       if (paths.includes(this.$route.path) && this.$store.state.playing) {
         this.$socket.emit('leave game')
         this.$store.state.playing = false
       }
     },
     goHome () {
-      this.$router.push('/home')
+      this.$router.push('/')
       this.$refs.leftSidenav.close()
+    },
+    toStats () {
+      this.close()
+      this.$store.state.gameWindow = 'stats'
     },
     toColorSelection () {
       this.close()
       this.$socket.emit('get colors')
     },
     toTutorial () {
+      this.$store.state.gameWindow = 'play'
       this.close()
       this.$store.state.game.tutorialMode = true
       if (this.$route.path !== '/play') {
@@ -164,6 +167,7 @@ export default {
     },
     toPlay () {
       this.close()
+      this.$store.state.gameWindow = 'play'
       if (this.$route.path !== '/play') {
         this.$router.push('/play')
       }
@@ -194,10 +198,16 @@ export default {
     background-color: rgba(0, 0, 0, 0);
   }
 
+  .sidenav .play-item {
+    background-color:rgba(255, 255, 255, 0.05);
+  }
+
   #app .sidenav .md-theme-default.md-list {
     background-color: rgba(0, 0, 0, 0);
   }
-
+  #app .md-sidenav-content {
+    overflow: hidden;
+  }
   .md-toolbar {
     z-index: 2;
   }

@@ -1,10 +1,10 @@
 <template>
   <div class="ar">
     <h1>Réalité augmentée</h1>
-    <p>Pour joué a ce jeu vous devez télécharger une application qui vous permettra de joué en pointant la camera de votre téléphone</p>
+    <p>Pour jouer à ce jeu vous devez télécharger une application qui exploite la camera de votre téléphone.</p>
     <p>Téléchargez l'application <a href="#">iOS</a> où <a href="#">Android</a> pour jouer.</p>
     <md-button v-if="supported" v-bind:href="dllink" class="md-raised md-primary" ref="dlbutton">Téléchargez l'application</md-button>
-    <p v-else>Il semble que vous n'êtes pas sur iOS ou Android. Utilisez l'intérfaçe web.</p>
+    <p v-else>Il semble que vous n'êtes pas sur iOS ou Android. Utilisez l'interface web.</p>
     <!-- <a :href="googleplay-link"><img alt='Disponible sur Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/fr_badge_web_generic.png'/></a> -->
     <div><a href="/webcontroller">Controlleur web</a></div>
   </div>
