@@ -1,5 +1,5 @@
 <template>
-  <div class="controller">
+  <div id="controller" class="controller">
     <v-touch class="touchArea" tag="div" v-on:tap="onTap">
       <target ref='target' :posX='posX' :posY='posY' :size='size'></target>
       <img ref='templeImage' src='../assets/TempleBG.jpg' alt='temple' />
@@ -29,8 +29,9 @@ export default {
     onTap (e) {
       if (this.$store.state.game.currentBallCount > 0) {
         this.$refs.target.displayTarget()
-        var xPos = e.srcEvent.layerX
-        var yPos = e.srcEvent.layerY - this.$refs.templeImage.offsetTop
+        var rect = document.getElementById('controller').getBoundingClientRect()
+        var xPos = e.pointers[0].clientX - rect.left
+        var yPos = e.pointers[0].clientY - rect.top
         this.posX = xPos - (this.size / 2)
         this.posY = yPos - (this.size / 2)
         var xRatio = (-20 * (xPos / this.$refs.templeImage.width)) + 9.5
