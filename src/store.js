@@ -60,7 +60,9 @@ export const store = new Vuex.Store({
       }
     },
     disconect (state, data) {
-      state.timedout = true
+      if (state.gameType !== 'ar' && state.gameType !== 'none') {
+        state.timedout = true
+      }
       state.playing = false
       state.timeoutMessage = data
     },

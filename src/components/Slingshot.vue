@@ -57,6 +57,11 @@ export default {
     tilt = component.angle
   },
   mounted () {
+    ball.position.left = (this.$refs.swipArea.offsetWidth - ball.size) / 2
+    this.ballPositionPX.left = ball.position.left + 'px'
+    pin.right.left = this.$refs.swipArea.offsetWidth - 30
+    this.pinPositionRight.left = pin.right.left + 'px'
+
     var canvas = this.$refs.canvas
     canvas.width = this.$refs.swipArea.offsetWidth * 5
     canvas.height = this.$refs.swipArea.offsetHeight * 5

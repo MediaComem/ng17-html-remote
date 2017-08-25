@@ -3,7 +3,7 @@
     <slider v-if="noGyro" id="angle-lever" :angle="angle" @valueChanged="angleChange($event)"></slider>
     <v-touch :style="touchArea" tag="div" @panstart="panStart" @panmove="panMove" @panend="panEnd">
       <a class="link" @click="goToColorSelection()"><ballCount class="ballcount"></ballCount></a>
-      <div class="swip-area">
+      <div class="swip-area" ref="swipeArea">
         <ball ref="projectile" id="projectile" class="ball" :color="color.player" :size="size" :style="ballSize"></ball>
         <div class="right text">points: {{ $store.state.stats.points }}</div>
       </div>
@@ -20,7 +20,7 @@ import Slider from '@/components/Angle_lever.vue'
 
 const ballsize = 80
 var shooting = false
-var left = (window.innerWidth - ballsize) / 2
+var left = 30
 var bottom = 20
 var tilt = 0
 var timeArray
@@ -46,6 +46,10 @@ export default {
       }
     })
   },
+  mounted () {
+    left = ((this.$refs.swipeArea.offsetWidth / 2) - (ballsize / 2))
+    this.ballSize.left = left + 'px'
+  },
   data () {
     return {
       touchArea: {
@@ -53,7 +57,7 @@ export default {
       },
       ballSize: {
         bottom: bottom + 'px',
-        left: left + 'px'
+        left: 0
       },
       color: {
         player: this.$store.getters.getColor.hex
