@@ -6,6 +6,9 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
+    os: 'none',
+    dllink: 'none',
+    supported: false,
     connect: false,
     playing: false,
     queuing: false,

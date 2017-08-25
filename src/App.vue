@@ -13,6 +13,25 @@ import sideNav from '@/components/Sidenav.vue'
 export default {
   name: 'app',
   created () {
+    var _os = getMobileOperatingSystem()
+
+    switch (_os) {
+      case 'Android':
+        this.$store.state.os = 'Android'
+        this.$store.state.supported = true
+        this.$store.state.dllink = this.googleplayLink
+        break
+      case 'iOS':
+        this.$store.state.os = 'iOS'
+        this.$store.state.supported = true
+        this.$store.state.dllink = this.appstoreLink
+        break
+      default:
+        this.$store.state.os = 'unknown'
+        this.$store.state.supported = false
+        this.$store.state.dllink = this.appstoreLink
+        break
+    }
     this.$store.dispatch('addBall')
   },
   data () {
@@ -29,6 +48,20 @@ export default {
       this.$refs.sideNav.closeLeftSidenav()
     }
   }
+}
+
+function getMobileOperatingSystem () {
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera
+
+  if (/android/i.test(userAgent)) {
+    return 'Android'
+  }
+
+  if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+    return 'iOS'
+  }
+
+  return 'unknown'
 }
 </script>
 
