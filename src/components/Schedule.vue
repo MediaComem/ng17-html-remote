@@ -94,7 +94,6 @@ export default {
 </script>
 <style>
 .schedule {
-  margin: 5px;
 }
 
 .schedule .time {
