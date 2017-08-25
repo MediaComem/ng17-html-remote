@@ -32,11 +32,10 @@ export default {
   margin: 0 5px;
 }
 .ar .app-container {
-  float: right;
-  display: block;
+  display: flex;
+  align-content: space-between;
 }
 .ar .ios {
-  float: left;
   margin-top: 10px;
 }
 .ar a.android img{
