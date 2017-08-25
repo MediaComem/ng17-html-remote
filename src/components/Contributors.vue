@@ -1,6 +1,6 @@
 <template>
   <div class="contrib">
-    <div class="text">
+    <div class="desc">
       <p>Voici un aperçu des contributions des artistes, que vous pourrez découvrir lors des sessions de vidéo mapping, à partir de <strong>21h et 22h30</strong>, les soirées des <strong>25 et 26 août</strong>, sur la <strong>Place Pestalozzi</strong>.</p>
     </div>
     <ul>
@@ -172,8 +172,11 @@ export default {
 }
 </script>
 <style>
+.desc {
+  margin: 20px auto;
+}
 .contrib {
-  margin: 10px;
+  margin: 20px;
 }
 .contrib ul {
   list-style: none;

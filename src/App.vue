@@ -53,6 +53,7 @@ html, body {
 }
 body {
   background-color: white;
+  height: 100%;
 }
 #app {
   font-family: 'Open Sans', sans-serif;
@@ -64,7 +65,8 @@ body {
   margin: 0px auto;
   padding: 0px;
   font-weight: 300;
-  max-width: 500px
+  max-width: 500px;
+  min-height: 100%
 
 }
 

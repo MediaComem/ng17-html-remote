@@ -3,7 +3,7 @@
   <stats v-else-if="isStats()"></stats>
   <div class="play-home" v-else-if="!isAGameRunning()">
     <div class="text">
-      <p>Il n'y a pas de jeu en ce moment...</p>
+      <h3>Il n'y a pas de jeu en ce moment...</h3>
       <p>Rendez-vous à la prochaine session !</p>
     </div>
     <md-list>
@@ -140,8 +140,8 @@
 }
 
 .tutorial-container h1 {
-  font-size: 10vw;
-  line-height: 10vw;
+  font-size: 3em;
+  line-height: 1.5em;
   text-align: center;
 }
 
