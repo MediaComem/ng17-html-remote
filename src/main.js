@@ -34,9 +34,6 @@ Vue.use(VueGoogleMaps, {
     key: 'AIzaSyBE5yuVFf2BOTmLCSyfHjpIsGMZZOqzr0o'
   }
 })
-Vue.use(VueAnalytics, {
-  id: 'UA-105132748-1'
-})
 Vue.use(VueTouch, {name: 'v-touch'})
 Vue.material.registerPalette('ng17-black', {
   500: '#161616',
