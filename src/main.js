@@ -94,6 +94,11 @@ Vue.material.registerTheme(
 
 sync(store, router)
 
+Vue.use(VueAnalytics, {
+  id: 'UA-105132748-1',
+  router
+})
+
 Vue.component('app-sidenav', Sidenav)
 Vue.component('socket-io-logic', SocketIO)
 
