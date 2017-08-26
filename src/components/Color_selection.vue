@@ -1,6 +1,6 @@
 <template>
   <div class="color-selection">
-    <div class="container">
+    <div class="tutorial-container">
       <colorPicker :colors='colors' @updateColor='changeColor' ></colorPicker>
     </div>
   </div>
@@ -41,8 +41,11 @@
   margin: 5px;
 }
 
-.container {
-  display: grid;
+.color-picker {
+  max-width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .vue-color__swatches {
