@@ -32,6 +32,7 @@ const LINK = 'fa fa-link'
 const VIMEO = 'fa fa-vimeo'
 const YOUTUBE = 'fa fa-youtube'
 const BEHANCE = 'fa fa-behance'
+const LINKEDIN = 'fa fa-linkedin'
 
 export default {
   name: 'contrib',
@@ -74,7 +75,9 @@ export default {
           'img': 'Iglal',
           'name': 'Iglal Boulad',
           'links': [
-            {'url': 'http://iglal.boulad.net/', 'icon': LINK}
+            {'url': 'http://iglal.boulad.net/', 'icon': LINK},
+            {'url': 'https://www.linkedin.com/in/iglal-boulad-88bab6128/', 'icon': LINKEDIN}
+
           ]
         },
         {
